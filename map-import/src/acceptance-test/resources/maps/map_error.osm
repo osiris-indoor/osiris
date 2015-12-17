@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='true' generator='JOSM'>
+<node id='1611777875' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10632668' lat='49.4188446' lon='8.6747156' />
+<node id='1611777892' timestamp='2012-02-09T09:16:40Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10631872' lat='49.4188634' lon='8.6746655' />
+<node id='1611777874' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='10632668' lat='49.4188446' lon='8.6746654' />
+<node id='1625020555' timestamp='2012-02-09T10:02:04Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632202' lat='49.4188445' lon='8.6746748'>
+    <tag k='door' v='yes' />
+    <tag k='height' v='2' />
+    <tag k='width' v='1' />
+</node>
+<way id='148066483' timestamp='2012-02-0

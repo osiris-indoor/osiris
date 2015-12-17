@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  						http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+  						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<context:property-placeholder location="classpath:profiles/${env}/env.properties" order="0"/>
+	<context:component-scan base-package="com.bitmonlab.batch" />
+	
+	<bean id="mapImportMain" class="com.bitmonlab.batch.imports.map.MapImportMain"></bean>
+	<bean id="importOSMFileManager" class="com.bitmonlab.batch.imports.map.managers.impl.ImportOSMFileManagerImpl"></bean>
+		
+	<tx:annotation-driven />
+	
+	<mongo:repositories base-package="com.bitmonlab.batch.imports.map.dao.api" mongo-template-ref="mongoTemplate" repository-impl-postfix="CustomImpl"/>
+	
+	
+	<mongo:mongo host="${mongo.host}" port="${mongo.port}" />
+	<mongo:db-factory dbname="${mongo.database}" />
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+	</bean>
+
+</beans>

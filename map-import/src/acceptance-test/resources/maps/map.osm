@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='true' generator='JOSM'>
+<node id='1611777875' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10632668' lat='39.926588421909436' lon='-4.658203125' />
+<node id='1611777892' timestamp='2012-02-09T09:16:40Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10631872' lat='40.83043687764923' lon='-4.658203125' />
+<node id='1611777874' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='10632668' lat='40.83043687764923' lon='-2.39501953125' />
+<node id='1625020555' timestamp='2012-02-09T10:02:04Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632202' lat='39.926588421909436' lon='-2.39501953125'>
+    <tag k='door' v='yes' />
+    <tag k='height' v='2' />
+    <tag k='width' v='1' />
+    <tag k='name' v='Biblioteca' />
+<tag k='comentario' v='Este es el único nodo que se debería crear con geometria Point y con 7 propertiesRelations' />
+</node>
+<node id='2611777876' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10632668' lat='40.153686857794035' lon='-4.141845703125' />
+<node id='2611777893' timestamp='2012-02-09T09:16:40Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10631872' lat='40.59727063442024' lon='-4.141845703125' />
+<node id='2611777875' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='10632668' lat='40.59727063442024' lon='-2.8894042968749996' />
+<node id='2625020556' timestamp='2012-02-09T10:02:04Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632202' lat='40.153686857794035' lon='-2.8894042968749996' />
+<node id='-542' timestamp='2012-11-23T00:57:59Z' visible='true' version='1' lat='41.5616319' lon='-8.3974854'>
+    <tag k='level' v='2' />
+    <tag k='name' v='escadas' />
+  </node>
+  <node id='-541' timestamp='2012-10-24T21:00:50Z' visible='true' version='1' lat='41.5615998' lon='-8.397478' />
+  <node id='-540' timestamp='2012-11-23T00:57:59Z' visible='true' version='1' lat='41.5616745' lon='-8.3973581'>
+    <tag k='level' v='0' />
+    <tag k='name' v='escadas' />
+  </node>
+  <node id='-539' timestamp='2012-10-24T21:08:49Z' visible='true' version='1' lat='41.5611156' lon='-8.39738' />
+  <node id='-538' timestamp='2012-10-24T21:00:49Z' visible='true' version='1' lat='41.5615909' lon='-8.3974746' />
+  <node id='-537' timestamp='2012-10-24T21:00:50Z' visible='true' version='1' lat='41.561707' lon='-8.3973651' />
+  <node id='-536' timestamp='2011-07-18T16:06:26Z' visible='true' version='1' lat='41.5612721' lon='-8.3971122' />
+  <node id='-535' timestamp='2011-07-18T16:06:26Z' visible='true' version='1' lat='41.5616584' lon='-8.397197' />
+  <node id='-534' timestamp='2011-07-18T16:06:26Z' visible='true' version='1' lat='41.5613939' lon='-8.397139' />
+  <node id='-533' timestamp='2012-10-24T21:00:38Z' visible='true' version='1' lat='41.5617055' lon='-8.3973068'>
+    <tag k='level' v='0' />
+    <tag k='name' v='Entrada DI' />
+    <tag k='room' v='entrance' />
+  </node>
+  <node id='-532' timestamp='2012-10-24T21:00:50Z' visible='true' version='1' lat='41.5617044' lon='-8.3973883' />
+  <node id='-531' timestamp='2012-10-24T21:08:49Z' visible='true' version='1' lat='41.561689' lon='-8.3972554' />
+  <node id='-530' timestamp='2012-10-24T21:08:49Z' visible='true' version='1' lat='41.5617403' lon='-8.3973048' />
+  <node id='-529' timestamp='2012-10-24T21:47:27Z' visible='true' version='1' lat='41.5617213' lon='-8.397348'>
+    <tag k='level' v='1' />
+    <tag k='name' v='casa de banho piso1' />
+    <tag k='room' v='yes' />
+  </node>
+  <node id='-528' timestamp='2012-11-23T00:57:59Z' visible='true' version='1' lat='41.5617057' lon='-8.3973769'>
+    <tag k='level' v='0' />
+    <tag k='name' v='escadas' />
+    <tag k='ref' v='ponto intermédio das escadas' />
+  </node>
+  <node id='-527' timestamp='2012-10-24T21:08:49Z' visible='true' version='1' lat='41.561714' lon='-8.3975139' />
+  <node id='-526' timestamp='2012-11-23T00:57:59Z' visible='true' version='1' lat='41.5616735' lon='-8.3973819'>
+    <tag k='level' v='1' />
+    <tag k='name' v='escadas' />
+  </node>
+  <node id='-525' timestamp='2012-10-24T21:08:49Z' visible='true' version='1' lat='41.5615978' lon='-8.3974907'>
+    <tag k='level' v='2' />
+    <tag k='name' v='Entrada DI' />
+    <tag k='room' v='entrance' />
+  </node>
+  <node id='-524' timestamp='2012-10-24T21:00:50Z' visible='true' version='1' lat='41.5616949' lon='-8.3973309' />
+  <node id='-523' timestamp='2012-10-24T21:08:49Z' visible='true' version='1' lat='41.5611418' lon='-8.3971708' />
+  <node id='-522' timestamp='2012-10-24T21:08:49Z' visible='true' version='1' lat='41.5617008' lon='-8.3972778' />
+  <node id='-521' timestamp='2012-10-24T21:00:50Z' visible='true' version='1' lat='41.5617031' lon='-8.3973439' />
+  <node id='-520' timestamp='2012-10-24T21:00:49Z' visible='true' version='1' lat='41.5615962' lon='-8.3974751' />
+  <node id='-519' timestamp='2012-11-23T00:57:59Z' visible='true' version='1' lat='41.5616315' lon='-8.3974829'>
+    <tag k='level' v='3' />
+    <tag k='name' v='escadas' />
+  </node>
+<way id='151353435' timestamp='2012-02-21T12:59:06Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10749949'>
+    <nd ref='2611777876' />
+    <nd ref='2611777893' />
+    <nd ref='2611777875' />
+    <nd ref='2625020556' />
+    <nd ref='2611777876' />
+<tag k='type' v='outer' />
+<tag k='comentario' v='Este LineString debería crearse con 2 propertiesRelations y 5 coordenadas' />
+  </way>
+ <way id='151330088' timestamp='2012-02-21T12:59:12Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10749949'>
+    <nd ref='1611777875' />
+    <nd ref='1611777892' />
+    <nd ref='1611777874' />
+    <nd ref='1625020555' />
+    <nd ref='1611777875' />    
+<tag k='type' v='inner' />
+<tag k='comentario' v='Este LineString debería crearse con 2 propertiesRelations y 5 coordenadas' />
+  </way>
+<way id='149537378' timestamp='2012-02-09T10:27:43Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632383'>
+    <nd ref='1625055198' />
+    <nd ref='1611777842' />
+    <nd ref='1611777839' />
+    <nd ref='1625055189' />
+    <nd ref='1625055192' />
+    <nd ref='1625055198' />
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+<tag k='comentario' v='Este way no tiene nodos en el osm por tanto no debería crearse' />
+  </way>
+<way id='148066483' timestamp='2012-02-09T11:01:19Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10632668'>
+    <nd ref='1611777875' />
+<nd ref='148066483' />
+    <nd ref='1611777893' />
+    <nd ref='1611777892' />
+<nd ref='1611777892' />
+    <nd ref='1611777874' />
+    <nd ref='1625020555' />
+    <nd ref='1611777875' />
+    <tag k='buildingpart' v='room' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+<tag k='comentario' v='Este LineString debería crearse con 2 propertiesRelations y 5 coordenadas' />
+</way>
+<way id='148066484' timestamp='2012-02-09T11:01:19Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10632668'>
+    <nd ref='1611777875' />
+<nd ref='148066483' />
+    <nd ref='1611777893' />
+    <nd ref='1611777892' />
+    <nd ref='1611777874' />
+    <nd ref='1625020555' />
+    <nd ref='1611777875' />
+    <tag k='buildingpart' v='room' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+<tag k='comentario' v='Este LineString también es un shell de una Relation, debería crearse con 2 propertiesRelations y 5 coordenadas' />
+</way>
+ <way id='-551' timestamp='2012-10-24T21:08:49Z' visible='true' version='1'>
+    <nd ref='-533' />
+    <nd ref='-522' />
+    <nd ref='-531' />
+    <nd ref='-535' />
+    <nd ref='-534' />
+    <nd ref='-536' />
+    <tag k='highway' v='footway' />
+  </way>
+  <way id='-550' timestamp='2012-11-21T12:34:54Z' visible='true' version='1'>
+    <nd ref='-539' />
+    <nd ref='-523' />
+    <nd ref='-530' />
+    <nd ref='-527' />
+    <nd ref='-539' />
+    <tag k='building' v='yes' />
+    <tag k='building:levels' v='5' />
+    <tag k='building:max_level' v='4' />
+    <tag k='building:min_level' v='0' />
+    <tag k='name' v='Departamento de Informática' />
+  </way>
+  <way id='-549' timestamp='2012-11-04T18:50:04Z' visible='true' version='1'>
+    <nd ref='-540' />
+    <nd ref='-537' />
+    <nd ref='-528' />
+    <tag k='highway' v='steps' />
+    <tag k='level' v='0' />
+    <tag k='name' v='escadas_0-1' />
+    <tag k='oneway' v='no' />
+  </way>
+  <way id='-548' timestamp='2012-11-04T18:50:04Z' visible='true' version='1'>
+    <nd ref='-526' />
+    <nd ref='-532' />
+    <nd ref='-528' />
+    <tag k='highway' v='steps' />
+    <tag k='level' v='1' />
+    <tag k='name' v='escadas_1-0' />
+    <tag k='oneway' v='no' />
+  </way>
+  <way id='-547' timestamp='2012-10-24T21:01:00Z' visible='true' version='1'>
+    <nd ref='-542' />
+    <nd ref='-541' />
+    <nd ref='-525' />
+    <tag k='highway' v='footway' />
+    <tag k='level' v='2' />
+    <tag k='name' v='corredor_nivel2' />
+  </way>
+  <way id='-546' action='modify' timestamp='2012-10-24T21:00:55Z' visible='true' version='1'>
+    <nd ref='-533' />
+    <nd ref='-524' />
+    <nd ref='-540' />
+    <tag k='highway' v='footway' />
+    <tag k='level' v='0' />
+    <tag k='name' v='corredor_nivel0' />
+  </way>
+  <way id='-545' action='modify' timestamp='2012-11-04T18:50:05Z' visible='true' version='1'>
+    <nd ref='-520' />
+    <nd ref='-519' />
+    <tag k='highway' v='steps' />
+    <tag k='level' v='2' />
+    <tag k='name' v='escadas_2-3' />
+    <tag k='oneway' v='no' />
+  </way>
+  <way id='-544' action='modify' timestamp='2012-10-24T21:00:56Z' visible='true' version='1'>
+    <nd ref='-521' />
+    <nd ref='-529' />
+    <tag k='highway' v='footway' />
+    <tag k='level' v='1' />
+    <tag k='name' v='corredor_nivel1' />
+  </way>
+  <way id='-543' action='modify' timestamp='2012-10-24T21:01:05Z' visible='true' version='1'>
+    <nd ref='-519' />
+    <nd ref='-538' />
+    <tag k='highway' v='footway' />
+    <tag k='level' v='3' />
+    <tag k='name' v='corredor_nivel3' />
+  </way>
+ <relation id='1997281' timestamp='2012-07-25T07:40:51Z' uid='426119' user='Fürst Oslek' visible='true' version='9' changeset='12482676'>
+    <member type='way' ref='149537377' role='buildingpart' />
+    <member type='way' ref='148066483' role='buildingpart' />
+    <member type='node' ref='1625055192' role='buildingpart' />
+    <member type='way' ref='149537378' role='buildingpart' />
+    <member type='way' ref='148066484' role='shell' />
+    <tag k='height' v='3.5' />
+    <tag k='level' v='-1' />
+    <tag k='name' v='Untergeschoss' />
+    <tag k='type' v='level' />
+	<tag k='comentario' v='Este Poligono debería tener 1 propertiesRelations y 5 coordenadas' />
+  </relation>
+  <relation id='2045953' timestamp='2012-02-21T12:59:06Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10749949'>
+    <member type='way' ref='151330088' role='outer' />
+    <member type='way' ref='151353435' role='inner' />    
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+    <tag k='type' v='multipolygon' />
+	<tag k='comentario' v='Este Poligono no debería tener propertiesRelations' />
+  </relation>
+  <relation id='2045954' timestamp='2012-02-21T12:59:06Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10749949'>
+    <member type='way' ref='151330088' role='outer' />
+    <member type='way' ref='151353435' role='inner' />    
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+    <tag k='type' v='Esta Relation no debería de estar creada por no ser multipolygon, aunque si la verás como propertiesRelations' />
+  </relation>
+  <relation id='2016097' timestamp='2012-02-21T12:07:15Z' uid='426119' user='Fürst Oslek' visible='true' version='5' changeset='10749533'>
+    <member type='relation' ref='2016070' role='level_0' />
+    <member type='relation' ref='1997281' role='level_-1' />
+	<member type='relation' ref='2016097' role='ciclo' />
+    <tag k='addr:city' v='Heidelberg' />
+    <tag k='addr:country' v='DE' />
+    <tag k='addr:housenumber' v='234' />
+    <tag k='addr:street' v='Im Neuenheimer Feld' />
+    <tag k='amenity' v='university' />
+    <tag k='building' v='yes' />
+    <tag k='building:levels' v='9' />
+    <tag k='building:max_level' v='7' />
+    <tag k='building:min_level' v='-1' />
+    <tag k='name' v='Institut für Geowissenschaften' />
+    <tag k='type' v='building' />
+	<tag k='comentario' v='Esta Relation no genera geometría pero sus propiedades tienen que estar en estos 3 ids: 151330088, 151353435, 2045953' />
+  </relation>
+</osm>

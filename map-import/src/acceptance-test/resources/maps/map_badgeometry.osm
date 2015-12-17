@@ -1,0 +1,119 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='true' generator='JOSM'>
+<node id='1' timestamp='2008-12-15T17:31:45Z' uid='55945' user='xeen' visible='true' version='2' changeset='395096' lat='49.4188241' lon='8.674662'>
+    <tag k='addr:housenumber' v='234' />
+    <tag k='addr:street' v='Im Neuenheimer Feld' />
+</node>
+<node id='1611777875' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10632668' lat='39.926588421909436' lon='-4.658203125' />
+<node id='1611777892' timestamp='2012-02-09T09:16:40Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10631872' lat='40.83043687764923' lon='-4.658203125' />
+<node id='1611777874' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='10632668' lat='40.83043687764923' lon='-2.39501953125' />
+<node id='1625020555' timestamp='2012-02-09T10:02:04Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632202' lat='39.926588421909436' lon='-2.39501953125'>
+    <tag k='door' v='yes' />
+    <tag k='height' v='2' />
+    <tag k='width' v='1' />
+    <tag k='name' v='Biblioteca' />
+<tag k='comentario' v='Este es el único nodo que se debería crear con geometria Point y con 7 propertiesRelations' />
+</node>
+<node id='2611777876' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10632668' lat='40.153686857794035' lon='-4.141845703125' />
+<node id='2611777893' timestamp='2012-02-09T09:16:40Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10631872' lat='40.59727063442024' lon='-4.141845703125' />
+<node id='2611777875' timestamp='2012-02-09T11:01:22Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='10632668' lat='40.59727063442024' lon='-2.8894042968749996' />
+<node id='2625020556' timestamp='2012-02-09T10:02:04Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632202' lat='40.153686857794035' lon='-2.8894042968749996' />
+<way id='11' timestamp='2012-02-09T10:27:43Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632383'>
+    <nd ref='1' />   
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+</way>
+<relation id='111' timestamp='2012-07-25T07:40:47Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='12482676'>
+    <member type='way' ref='11' role='buildingpart' />
+    <member type='node' ref='1' role='buildingpart' />    
+    <tag k='height' v='3.5' />
+    <tag k='level' v='7' />
+    <tag k='level:usage' v='academic' />
+    <tag k='name' v='7. Obergeschoss' />
+    <tag k='type' v='level' />
+</relation>
+
+<node id='2' timestamp='2008-12-15T17:31:45Z' uid='55945' user='xeen' visible='true' version='2' changeset='395096' lat='49.4188241' lon='8.674662'>
+    <tag k='addr:housenumber' v='234' />
+    <tag k='addr:street' v='Im Neuenheimer Feld' />
+</node>
+<way id='22' timestamp='2012-02-09T10:27:43Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632383'>    
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+</way>
+<relation id='222' timestamp='2012-07-25T07:40:47Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='12482676'>
+    <member type='way' ref='22' role='buildingpart' />
+    <member type='node' ref='2' role='buildingpart' />    
+    <tag k='height' v='3.5' />
+    <tag k='level' v='6' />
+    <tag k='level:usage' v='academic' />
+    <tag k='name' v='6. Obergeschoss' />
+    <tag k='type' v='level' />
+</relation>
+
+<node id='3' timestamp='2008-12-15T17:31:45Z' uid='55945' user='xeen' visible='true' version='2' changeset='395096' lat='49.4188241' lon='8.674662'>
+    <tag k='addr:housenumber' v='234' />
+    <tag k='addr:street' v='Im Neuenheimer Feld' />
+</node>
+<way id='33' timestamp='2012-02-09T10:27:43Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632383'>
+    <nd ref='3' />   
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+</way>
+<relation id='333' timestamp='2012-07-25T07:40:47Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='12482676'>
+    <member type='way' ref='33' role='buildingpart' />    
+    <tag k='height' v='3.5' />
+    <tag k='level' v='5' />
+    <tag k='level:usage' v='academic' />
+    <tag k='name' v='5. Obergeschoss' />
+    <tag k='type' v='level' />
+</relation>
+<node id='4' timestamp='2008-12-15T17:31:45Z' uid='55945' user='xeen' visible='true' version='2' changeset='395096' lat='49.4188241' lon='8.674662'>
+    <tag k='addr:housenumber' v='234' />
+    <tag k='addr:street' v='Im Neuenheimer Feld' />
+</node>
+<way id='44' timestamp='2012-02-09T10:27:43Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10632383'>  
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+</way>
+<way id='151353435' timestamp='2012-02-21T12:59:06Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10749949'>
+    <nd ref='2611777876' />
+    <nd ref='2611777893' />
+    <nd ref='2611777875' />
+    <nd ref='2625020556' />
+    <nd ref='2611777876' />
+	<tag k='type' v='outer' />
+	<tag k='comentario' v='Este LineString debería crearse con 2 propertiesRelations y 5 coordenadas' />
+</way>
+<way id='151330088' timestamp='2012-02-21T12:59:12Z' uid='426119' user='Fürst Oslek' visible='true' version='3' changeset='10749949'>
+    <nd ref='1611777875' />
+    <nd ref='1611777892' />
+    <nd ref='1611777874' />
+    <nd ref='1625020555' />
+    <nd ref='1611777875' />    
+	<tag k='type' v='inner' />
+	<tag k='comentario' v='Este LineString debería crearse con 2 propertiesRelations y 5 coordenadas' />
+</way>
+<relation id='444' timestamp='2012-07-25T07:40:47Z' uid='426119' user='Fürst Oslek' visible='true' version='4' changeset='12482676'>
+    <member type='way' ref='44' role='buildingpart' />    
+    <tag k='height' v='3.5' />
+    <tag k='level' v='5' />
+    <tag k='level:usage' v='academic' />
+    <tag k='name' v='5. Obergeschoss' />
+    <tag k='type' v='level' />
+</relation>
+ <relation id='2045953' timestamp='2012-02-21T12:59:06Z' uid='426119' user='Fürst Oslek' visible='true' version='1' changeset='10749949'>    
+    <member type='way' ref='151353435' role='inner' />    
+    <member type='way' ref='151330088' role='outer' />
+    <tag k='buildingpart' v='corridor' />
+    <tag k='height' v='3' />
+    <tag k='indoor' v='yes' />
+    <tag k='type' v='multipolygon' />
+	<tag k='comentario' v='Este Poligono no debería tener propertiesRelations' />
+  </relation>
+  
+</osm>
