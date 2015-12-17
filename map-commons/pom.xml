@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.bitmonlab.commons.api</groupId>
+  <artifactId>map-commons</artifactId>
+  <version>1.0</version>
+  
+  <packaging>jar</packaging>
+  
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
+ 	<spring-data-mongo.version>1.1.1.RELEASE</spring-data-mongo.version>
+	<compiler.version>1.7</compiler.version>
+  	<powermock.version>1.6.3</powermock.version>  	
+  </properties>
+  
+  <build>	
+      <finalName>osiris-map-commons</finalName>                
+                <plugins>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-jar-plugin</artifactId>
+                                <version>2.3.2</version>
+                                <configuration>
+                                        <archive>
+                                                <manifest>
+                                                        <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                                        <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>                                                        
+                                                </manifest>
+                                        </archive>
+                                </configuration>
+                        </plugin>                        
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<version>2.4</version>
+							<configuration>
+								<source>${compiler.version}</source>
+								<target>${compiler.version}</target>
+							</configuration>
+						</plugin>	
+	</plugins>	
+  </build>
+  
+  <dependencies>
+
+			
+			<!-- Spring Dependencies -->
+			<dependency>
+            	<groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-mongodb</artifactId>
+                <version>${spring-data-mongo.version}</version>
+                <exclusions>
+                	<exclusion>
+                    	<groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            
+            <!-- 	Validations  -->
+			<dependency>
+				   <groupId>org.hibernate</groupId>
+				   <artifactId>hibernate-validator</artifactId>
+				   <version>5.2.1.Final</version>
+			</dependency>
+            
+            <!-- 	Geometry and maths  -->		
+            <dependency>
+				<groupId>math.geom2d</groupId>
+				<artifactId>javaGeom</artifactId>
+				<exclusions>
+                	<exclusion>
+                    	<groupId>com.vividsolutions</groupId>
+                        <artifactId>jts</artifactId>
+                    </exclusion>
+                </exclusions>   
+				<version>0.11.1</version>
+			</dependency>	
+			
+            
+            <!-- 	PowerMockito  -->
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-module-junit4</artifactId>
+				<version>${powermock.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-api-mockito</artifactId>
+				<version>${powermock.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.12.1.GA</version>
+			</dependency>
+			
+			
+			
+	</dependencies>
+	
+    <distributionManagement>
+
+    	<snapshotRepository>
+        	<id>osiris-artifactory</id>
+            <name>osiris-artifactory-snapshots</name>           
+            <url>http://54.247.180.103/artifactory/osiris-snapshot-local</url>         
+        </snapshotRepository>
+        
+    	 <repository>
+        	<id>osiris-artifactory</id>
+            <name>osiris-artifactory-release</name>
+            <url>http://54.247.180.103/artifactory/osiris-release-local</url>
+        </repository>       
+
+    </distributionManagement>
+	
+  
+  
+</project>
