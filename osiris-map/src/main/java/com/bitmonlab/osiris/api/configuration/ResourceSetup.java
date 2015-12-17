@@ -31,7 +31,6 @@ public class ResourceSetup extends AutoWiredService<OsirisConfiguration>{
 	
 	public void run(OsirisConfiguration configuration, Environment environment) throws Exception {
 						 
-		//super.initializeWithAppContext(configuration,environment,appContext);
 		super.runWithAppContext(configuration,environment,appContext);
 		
 		// Remove all of Dropwizard's custom ExceptionMappers

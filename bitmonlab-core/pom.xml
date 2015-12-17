@@ -1,0 +1,195 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.bitmonlab</groupId>
+  <artifactId>bitmonlab-core</artifactId>
+  <version>1.0</version>
+  
+  <packaging>jar</packaging>
+  
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
+ 	<aspectj.version>1.7.2</aspectj.version>
+	<spring.version>3.2.1.RELEASE</spring.version>
+	<powermock.version>1.5</powermock.version>
+	<mockito.version>1.9.5</mockito.version>
+	<jersey.version>1.18</jersey.version>
+  </properties>
+  
+  <build>	
+      <finalName>bitmonlab-core</finalName>                
+                <plugins>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-jar-plugin</artifactId>
+                                <version>2.3.2</version>
+                                <configuration>
+                                        <archive>
+                                                <manifest>
+                                                        <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                                                        <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>                                                        
+                                                </manifest>
+                                        </archive>
+                                </configuration>
+                        </plugin>                        
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-compiler-plugin</artifactId>
+							<version>2.4</version>
+							<configuration>
+								<source>${compiler.version}</source>
+								<target>${compiler.version}</target>
+							</configuration>
+						</plugin>	
+	</plugins>	
+  </build>
+  
+  <dependencies>
+          
+            <!-- Spring AOP + AspectJ -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
+		<!-- Hibernate Validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.0.0.Final</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20090211</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-multipart</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.12</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-apache-client</artifactId>
+			<version>1.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.2.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>1.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yammer.dropwizard</groupId>
+			<artifactId>dropwizard-client</artifactId>
+			<version>0.6.2</version>
+		</dependency>
+		
+		<dependency>
+	    	<groupId>commons-beanutils</groupId>
+	    	<artifactId>commons-beanutils-core</artifactId>
+	    	<version>1.8.3</version>
+    	</dependency>
+		
+		
+	</dependencies>
+
+	
+	
+
+  
+  
+</project>
