@@ -83,11 +83,7 @@
 					<resource>                                                
                     	<directory>org/java/plugin/standard</directory>
                     	<filtering>false</filtering>
-                    </resource>
-                    <resource>
-                    	<directory>src/main/resources/external-config</directory>                                                
-                    	<filtering>false</filtering>
-                    </resource> 
+                    </resource>                 
 				</resources>
 				<plugins>
 				    <plugin>
@@ -122,7 +118,7 @@
 											implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 											<manifestEntries>
                                             	<Main-Class>${main.class}</Main-Class>
-                                                <Class-Path>org/openstreetmap/osmosis/osmosis/osmosis-xml/0.44.1/osmosis-plugins.conf</Class-Path>                                                                                                                                                                                
+                                                <Class-Path></Class-Path>                                                                                                                                                                                
                                             </manifestEntries> 
 										</transformer>
 										<transformer
