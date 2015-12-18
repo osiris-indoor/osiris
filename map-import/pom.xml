@@ -129,7 +129,7 @@
 											implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
 											<resource>META-INF/spring.schemas</resource>
 										</transformer>
-									</transformers>
+									</transformers>									
 								</configuration>
 							</execution>
 						</executions>
@@ -148,7 +148,7 @@
 								<configuration>
 									<sources>
 										<source>src/acceptance-test/java</source>
-									</sources>
+									</sources>									
 								</configuration>
 							</execution>
 							<execution>
@@ -162,8 +162,8 @@
 										<resource>
 											<directory>src/acceptance-test/resources</directory>
 										</resource>
-									</resources>
-								</configuration>
+									</resources>									
+								</configuration>								
 							</execution>
 						</executions>
 					</plugin>
@@ -178,6 +178,9 @@
 									<goal>integration-test</goal>
 									<goal>verify</goal>
 								</goals>
+								<configuration>
+									<argLine>-Denv=ci</argLine>
+								</configuration>
 							</execution>
 						</executions>
 					</plugin>
