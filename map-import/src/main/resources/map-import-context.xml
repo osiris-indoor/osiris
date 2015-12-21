@@ -11,7 +11,7 @@
                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-	<context:property-placeholder location="classpath:profiles/${env}/env.properties" order="0"/>
+	<context:property-placeholder location="classpath:profiles/${env}/env.importmap.properties" order="0"/>
 	<context:component-scan base-package="com.bitmonlab.batch" />
 	
 	<bean id="mapImportMain" class="com.bitmonlab.batch.imports.map.MapImportMain"></bean>
