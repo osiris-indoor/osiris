@@ -22,7 +22,19 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.io.FileUtils;
 import org.openstreetmap.osmosis.core.Osmosis;
+import org.opentripplanner.graph_builder.GraphBuilderTask;
+import org.opentripplanner.graph_builder.impl.CheckGeometryGraphBuilderImpl;
+import org.opentripplanner.graph_builder.impl.GtfsGraphBuilderImpl;
+import org.opentripplanner.graph_builder.impl.TransitToStreetNetworkGraphBuilderImpl;
+import org.opentripplanner.graph_builder.impl.osm.DefaultWayPropertySetSource;
+import org.opentripplanner.graph_builder.impl.osm.OpenStreetMapGraphBuilderImpl;
+import org.opentripplanner.graph_builder.impl.osm.PortlandCustomNamer;
+import org.opentripplanner.graph_builder.impl.transit_index.TransitIndexBuilder;
+import org.opentripplanner.graph_builder.services.GraphBuilder;
+import org.opentripplanner.graph_builder.services.GraphBuilderWithGtfsDao;
+import org.opentripplanner.openstreetmap.impl.AnyFileBasedOpenStreetMapProviderImpl;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.bitmonlab.commons.api.map.model.geojson.Feature;
@@ -35,10 +47,12 @@ import com.bitmonlab.batch.imports.map.dao.api.ImportRepository;
 import com.bitmonlab.batch.imports.map.dao.api.MetaDataImportRepository;
 import com.bitmonlab.batch.imports.map.exceptions.BackgroundMapBuilderException;
 import com.bitmonlab.batch.imports.map.exceptions.ExecutionNotAllowed;
+import com.bitmonlab.batch.imports.map.exceptions.GraphBuilderException;
 import com.bitmonlab.batch.imports.map.exceptions.ImportFilesException;
 import com.bitmonlab.batch.imports.map.exceptions.InternalErrorException;
 import com.bitmonlab.batch.imports.map.exceptions.ParseMapException;
 import com.bitmonlab.batch.imports.map.exceptions.QueryException;
+import com.bitmonlab.batch.imports.map.exceptions.RoutingFileNotExistsException;
 import com.bitmonlab.batch.imports.map.managers.api.ImportOSMFileManager;
 import com.bitmonlab.batch.imports.map.model.osm.Bounds;
 import com.bitmonlab.batch.imports.map.model.osm.Member;
@@ -69,14 +83,18 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 	private final String file_osm = "map.osm";
 	
 	private final String file_map = "background.map";
+	
+	private final String file_obj = "Graph.obj";
 
 	public void importOSMFile(final String appIdentifier,
-							  final InputStream data) 
-									  throws ExecutionNotAllowed, InternalErrorException, ParseMapException, QueryException, IOException, NoSuchAlgorithmException, BackgroundMapBuilderException, ImportFilesException{
+							  final InputStream data, 
+							  boolean bGraphBuilder) 
+									  throws ExecutionNotAllowed, InternalErrorException, ParseMapException, QueryException, IOException, NoSuchAlgorithmException, BackgroundMapBuilderException, ImportFilesException, RoutingFileNotExistsException, GraphBuilderException{
 
 		OSM osm = null;
 		OutputStream os = null;
 		String jsonStr = null;
+		String objStr = null;
 		
 		final String pathUser = pathRootUser.concat(File.separator)
 				.concat(appIdentifier).concat(File.separator);
@@ -100,9 +118,12 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 			
 			//Parse map .osm file (xml format)
 			JAXBContext context = JAXBContext.newInstance(OSM.class);
-			Unmarshaller unmarshaller = context.createUnmarshaller();
-			UnMarshallerListener umlistener = new UnMarshallerListener();
-			unmarshaller.setListener(umlistener);
+			Unmarshaller unmarshaller = context.createUnmarshaller();			
+			if(bGraphBuilder){
+				unmarshaller.setListener(new UnMarshallerListenerGraph());
+			}else{
+				unmarshaller.setListener(new UnMarshallerListener());
+			}			
 			osm = (OSM) unmarshaller.unmarshal(data);
 
 			Marshaller marshaller = context.createMarshaller();	
@@ -130,13 +151,20 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 				boundsMap = osm.getBounds();
 			}
 			
-			MetaData metaData = generateMetaData(jsonStr, boundsMap, appIdentifier);
+			//Build Graph for routing, 
+			if(bGraphBuilder){
+				graphBuilder(appIdentifier, pathUser, strOSMFile);			
+				objStr=readObjFile(appIdentifier);
+			}
+			
+			//background for app and create Metadata of Map			
+			MetaData metaData = generateMetaData(jsonStr, objStr, boundsMap, appIdentifier, bGraphBuilder);
 			
 			metaDataRepository.save(metaData);
 			
 			backgroundMapBuilder(appIdentifier, pathUser, strOSMFile, boundsMap);
 			
-			saveImportFiles(appIdentifier, pathUser);
+			saveImportFiles(appIdentifier, pathUser, bGraphBuilder);
 
 			deleteImportFilesDisk(pathUser);
 									
@@ -154,6 +182,56 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 				os.close();
 			}
 		}		
+	}
+	
+	private String readObjFile(String appIdentifier) throws RoutingFileNotExistsException{
+		String objPath=pathRootUser.concat(File.separator).concat(appIdentifier).concat(File.separator).concat(file_obj);
+		File objFile=new File(objPath);
+		String objFileText;
+		try {
+			objFileText = FileUtils.readFileToString(objFile);
+		} 
+		catch (IOException e) {
+			throw new RoutingFileNotExistsException();
+		}
+		return objFileText;
+	}
+	
+	private void graphBuilder(final String appIdentifier,
+			final String pathUser, final String strOSMFile) throws GraphBuilderException{
+
+		try {
+			GraphBuilderTask graphBuilderTask = new GraphBuilderTask();
+			GtfsGraphBuilderImpl gtfsBuilder = new GtfsGraphBuilderImpl();
+
+			List<GraphBuilderWithGtfsDao> gtfsGraphBuilders = new ArrayList<GraphBuilderWithGtfsDao>();
+			TransitIndexBuilder transitIndexBuilder = new TransitIndexBuilder();
+			gtfsGraphBuilders.add(transitIndexBuilder);
+			gtfsBuilder.setGtfsGraphBuilders(gtfsGraphBuilders);
+
+			AnyFileBasedOpenStreetMapProviderImpl anyFileBasedOpenStreetMapProviderImpl = new AnyFileBasedOpenStreetMapProviderImpl();
+			File fileOSM = new File(strOSMFile);
+			anyFileBasedOpenStreetMapProviderImpl.setPath(fileOSM);
+
+			OpenStreetMapGraphBuilderImpl osmBuilder = new OpenStreetMapGraphBuilderImpl();
+			osmBuilder.setProvider(anyFileBasedOpenStreetMapProviderImpl);
+			osmBuilder
+					.setDefaultWayPropertySetSource(new DefaultWayPropertySetSource());
+			osmBuilder.setCustomNamer(new PortlandCustomNamer());
+
+			List<GraphBuilder> graphLoaders = new ArrayList<GraphBuilder>();
+			graphLoaders.add(osmBuilder);
+			graphLoaders.add(new CheckGeometryGraphBuilderImpl());
+			graphLoaders.add(new TransitToStreetNetworkGraphBuilderImpl());
+			graphBuilderTask.setGraphBuilders(graphLoaders);
+			graphBuilderTask.setPath(pathUser);
+
+			graphBuilderTask.run();
+
+		} catch (Exception e) {
+			throw new GraphBuilderException();
+		}
+
 	}
 	
 	public Collection<Feature> transformOSMFileToGeoJson(final OSM osm,
@@ -503,13 +581,19 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 
 	}
 	
-	private MetaData generateMetaData(String strjson, Bounds boundsMap,
-			String appId) throws NoSuchAlgorithmException{
+	private MetaData generateMetaData(String strjson, String objStr,Bounds boundsMap,
+			String appId, boolean bGraphBuilder) throws NoSuchAlgorithmException{
 
 		String strChkSum = Cryptography.calculateCheckSum(strjson);
+		
 		MetaData metaData = new MetaData();
 		metaData.setAppId(appId);
 		metaData.setOSMChecksum(strChkSum);
+		
+		if(bGraphBuilder){
+			String strChkSumObj = Cryptography.calculateCheckSum(objStr);
+			metaData.setRoutingChecksum(strChkSumObj);
+		}
 
 		metaData.setMaxlat(Double.valueOf(boundsMap.getMaxlat()));
 		metaData.setMaxlon(Double.valueOf(boundsMap.getMaxlon()));
@@ -547,10 +631,10 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 
 	}
 	
-	private void saveImportFiles(String appIdentifier, String pathUser) throws IOException, ImportFilesException{
+	private void saveImportFiles(String appIdentifier, String pathUser, boolean bGraphBuilder) throws IOException, ImportFilesException{
 
 		String pathOSM = pathUser.concat(file_osm);
-		String pathMap = pathUser.concat(file_map);
+		String pathMap = pathUser.concat(file_map);		
 
 		File fileOSM = new File(pathOSM);
 		File fileMap = new File(pathMap);
@@ -558,6 +642,11 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 		if (fileOSM.exists() && fileMap.exists()) {
 			importFilesRepository.saveFileOSM(appIdentifier, fileOSM);
 			importFilesRepository.saveFileMap(appIdentifier, fileMap);
+			if(bGraphBuilder){
+				String pathObj = pathUser.concat(file_obj);
+				File fileObj = new File(pathObj);				
+				importFilesRepository.saveFileObj(appIdentifier, fileObj);
+			}
 		} else {
 			throw new ImportFilesException();
 		}

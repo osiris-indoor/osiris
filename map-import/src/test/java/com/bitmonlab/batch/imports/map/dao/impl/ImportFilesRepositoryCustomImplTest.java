@@ -27,6 +27,8 @@ public class ImportFilesRepositoryCustomImplTest {
 	
 	private String collectionNameOSM = "files_osm";
 	
+	private String collectionNameObj = "files_obj";
+	
 	@InjectMocks
 	private ImportFilesRepositoryCustomImpl importFilesRepositoryCustomImpl;
 	
@@ -126,5 +128,43 @@ public class ImportFilesRepositoryCustomImplTest {
 		Mockito.verify(gridFSInputFile).setFilename(idApp);
 		Mockito.verify(gridFSInputFile).save();
 	}
+	
+	@Test
+	public void saveFileObj() throws Exception{
+		
+		//Fixture
+		Mockito.when(mongoTemplate.getDb()).thenReturn(db);
+		PowerMockito.whenNew(GridFS.class).withArguments(db, collectionNameObj).thenReturn(gridFS);		
+		Mockito.when(gridFS.findOne(idApp)).thenReturn(gridFSFile);
+		Mockito.when(gridFS.createFile(file)).thenReturn(gridFSInputFile);
+				
+		// Experimentations
+		importFilesRepositoryCustomImpl.saveFileObj(idApp,file);
+		
+		// Expectations
+		Mockito.verify(gridFS).remove(gridFSFile);
+		Mockito.verify(gridFS).createFile(file);
+		Mockito.verify(gridFSInputFile).setFilename(idApp);
+		Mockito.verify(gridFSInputFile).save();
+	}
+	
+	@Test
+	public void saveFileObjWithoutRemoving() throws Exception{
+		
+		//Fixture
+		Mockito.when(mongoTemplate.getDb()).thenReturn(db);
+		PowerMockito.whenNew(GridFS.class).withArguments(db, collectionNameObj).thenReturn(gridFS);		
+		Mockito.when(gridFS.findOne(idApp)).thenReturn(null);
+		Mockito.when(gridFS.createFile(file)).thenReturn(gridFSInputFile);
+				
+		// Experimentations
+		importFilesRepositoryCustomImpl.saveFileObj(idApp,file);
+		
+		// Expectations
+		Mockito.verify(gridFS).createFile(file);
+		Mockito.verify(gridFSInputFile).setFilename(idApp);
+		Mockito.verify(gridFSInputFile).save();
+	}
+
 	
 }

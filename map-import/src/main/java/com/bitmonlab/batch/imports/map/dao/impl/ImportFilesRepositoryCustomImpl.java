@@ -24,6 +24,8 @@ public class ImportFilesRepositoryCustomImpl implements ImportFilesRepositoryCus
 	private String collectionNameMap = "files_map";
 	
 	private String collectionNameOSM = "files_osm";
+	
+	private String collectionNameObj = "files_obj";
 
 	@Override
 	public void saveFileMap(String appIdentifier, File map) throws IOException{
@@ -39,6 +41,14 @@ public class ImportFilesRepositoryCustomImpl implements ImportFilesRepositoryCus
 		GridFS gridFS = getGridFS(collectionNameOSM);
 		removeFile(appIdentifier,gridFS);		
 		saveFile(appIdentifier,osm,gridFS);
+	}
+	
+	@Override
+	public void saveFileObj(String appIdentifier, File obj) throws IOException{
+		// TODO Auto-generated method stub
+		GridFS gridFS = getGridFS(collectionNameObj);
+		removeFile(appIdentifier,gridFS);		
+		saveFile(appIdentifier,obj,gridFS);
 	}
 	
 	private GridFS getGridFS(String collectionName){
@@ -60,6 +70,7 @@ public class ImportFilesRepositoryCustomImpl implements ImportFilesRepositoryCus
 		}
 	}
 
+	
 	
 	
 }

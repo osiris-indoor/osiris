@@ -438,6 +438,24 @@
              </dependency>
              <!-- END Jersey --> 
              
+             
+            <!-- Opentripplanner -->
+			<dependency>
+            	<groupId>org.opentripplanner</groupId>
+                <artifactId>opentripplanner-graph-builder</artifactId>
+                <version>0.9.1</version>
+                <exclusions>
+                	<exclusion>
+                    	<groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                    	<groupId>crosby.binary</groupId>
+                        <artifactId>osmpbf</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+             
              <!-- Mapsforge --> 
              <!-- IMPORTANT: to keep order in Osmosis libraries -->     
              <dependency>
@@ -470,7 +488,12 @@
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-compress</artifactId>
 				<version>1.0</version>
-			</dependency>
+			</dependency>			    
+             <dependency>
+             	<groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>1.3.2</version>
+             </dependency>
                     
 
 	</dependencies>

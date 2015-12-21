@@ -9,4 +9,6 @@ public interface ImportFilesRepositoryCustom {
 
 	void saveFileOSM(String appIdentifier, File osm) throws IOException;
 
+	void saveFileObj(String appIdentifier, File obj) throws IOException;
+
 }

@@ -24,7 +24,7 @@ public class ImportMap {
 			
 		try {		
 									
-			String[] pArgs  = {appIdentifier, "src/acceptance-test/resources/maps/" + mapName, "acceptance-test"};				
+			String[] pArgs  = {appIdentifier, "src/acceptance-test/resources/maps/" + mapName, "yes", "acceptance-test"};				
 			mapImportMain.main(pArgs);
 			
 		}catch (Exception e){			

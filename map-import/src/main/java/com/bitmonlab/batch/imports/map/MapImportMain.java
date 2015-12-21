@@ -21,12 +21,14 @@ public class MapImportMain {
 				
 		String appIdentifier = null;
 		File osmFile = null;
+		String graphBuilder = null;
+		boolean bGraphBuilder = false;
 		
 		//Workaround to pass acceptance test
 		String acceptanceTest = null;
 		boolean bAcceptanceTest = false;
 						
-		if (pArgs.length == 2 || pArgs.length==3) {		   		    	
+		if (pArgs.length == 3 || pArgs.length==4) {		   		    	
 		    	appIdentifier = pArgs[0];
 		    
 		    	String fileName = pArgs[1];
@@ -36,15 +38,22 @@ public class MapImportMain {
 	            	System.exit(-1);
 	            }
 	            
+	            graphBuilder = pArgs[2];
+	            if(graphBuilder.equals("yes")){
+	            	bGraphBuilder = true;
+	            }else{
+	            	bGraphBuilder = false;
+	            }
+	            
 	            //Workaround to pass acceptance test
-	            if(pArgs.length==3){
-	            	if(pArgs[2].equals("acceptance-test")){
+	            if(pArgs.length==4){
+	            	if(pArgs[3].equals("acceptance-test")){
 	            		bAcceptanceTest = true;
 	            	}
 	            }
 	            					 
 		}else{			
-			System.out.println("java -Denv=local -jar mapImport.jar AppIdentifier FileOSMFormat");
+			System.out.println("java -Denv=local -jar mapImport.jar AppIdentifier FileOSMFormat graphBuilder(yes/no)");
 			System.exit(-1);
 		}
 		
@@ -55,7 +64,7 @@ public class MapImportMain {
     	
     	
     	ImportOSMFileManager importOSMFileManager =  (ImportOSMFileManager) ctx.getBean("importOSMFileManager"); 		    	
-    	importOSMFileManager.importOSMFile(appIdentifier, new FileInputStream(osmFile));	 
+    	importOSMFileManager.importOSMFile(appIdentifier, new FileInputStream(osmFile), bGraphBuilder);	 
     	  
     	//Workaround to pass acceptance test
     	if(!bAcceptanceTest) System.exit(0);
