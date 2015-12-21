@@ -2,8 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.bitmonlab.commons.api</groupId>
   <artifactId>map-commons</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
+  <version>0.0.1-SNAPSHOT</version>    
   <packaging>jar</packaging>
   
   <url>http://maven.apache.org</url>
@@ -15,7 +14,7 @@
   </properties>
   
   <build>	
-      <finalName>osiris-map-commons</finalName>                
+      <finalName>map-commons</finalName>                
                 <plugins>
                         <plugin>
                                 <groupId>org.apache.maven.plugins</groupId>
