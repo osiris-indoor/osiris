@@ -480,14 +480,14 @@
 	<distributionManagement>
 
     	<snapshotRepository>
-        	<id>osiris-artifactory</id>
-            <name>osiris-artifactory-snapshots</name>           
+        	<id>ocean-artifactory</id>
+            <name>ocean-artifactory-snapshots</name>           
             <url>http://54.247.180.103/artifactory/osiris-snapshot-local</url>         
         </snapshotRepository>
         
     	 <repository>
-        	<id>osiris-artifactory</id>
-            <name>osiris-artifactory-release</name>
+        	<id>ocean-artifactory</id>
+            <name>ocean-artifactory-release</name>
             <url>http://54.247.180.103/artifactory/osiris-release-local</url>
         </repository>       
 
