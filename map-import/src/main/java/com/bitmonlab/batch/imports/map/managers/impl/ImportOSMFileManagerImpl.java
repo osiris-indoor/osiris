@@ -328,6 +328,23 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 							coordinatesList.add((ArrayList<Double>) node
 									.getNodeCoordinates());
 						}
+						
+						if(way.existTag("@graphIndoor")){    
+							if(n.getRef().equals(way.getNds().get(0).getRef()) || 
+									n.getRef().equals(way.getNds().get(way.getNds().size()-1).getRef())){
+									Tag extremTag = new Tag();
+		                            extremTag.setK("@end");
+		                            extremTag.setV("true");
+		                            if(node.getTags()!=null){
+		                            	node.getTags().add(extremTag);
+		                            }
+		                            else{
+		                            	List<Tag> tags=new ArrayList<Tag>();
+		                            	tags.add(extremTag);
+		                            	node.setTags(tags);
+		                            }
+							}
+						} 
 
 						nodeToPoint(appIdentifier, node, parentProperties, featureCollection);
 					}
