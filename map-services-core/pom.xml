@@ -363,6 +363,22 @@
 		
     </dependencies>
    
+   	<distributionManagement>
+
+    	<snapshotRepository>
+        	<id>ocean-artifactory</id>
+            <name>ocean-artifactory-snapshots</name>           
+            <url>http://54.247.180.103/artifactory/osiris-snapshot-local</url>         
+        </snapshotRepository>
+        
+    	 <repository>
+        	<id>ocean-artifactory</id>
+            <name>ocean-artifactory-release</name>
+            <url>http://54.247.180.103/artifactory/osiris-release-local</url>
+        </repository>       
+
+    </distributionManagement>
+    
 		
 	
 </project>
