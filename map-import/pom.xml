@@ -25,6 +25,15 @@
   
   <build>
 		<finalName>map-import</finalName>
+		
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>				
+				<filtering>false</filtering>				
+			</resource>				
+		</resources>
+		
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -37,16 +46,14 @@
 							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
 						</manifest>
 					</archive>
+					<excludes>
+                		<exclude>*.jar</exclude>
+            		</excludes>
 				</configuration>
 			</plugin>		
 		</plugins>
 
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>false</filtering>
-			</resource>
-		</resources>
+		
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -203,12 +210,8 @@
 				<resources>
 					<resource>
 						<directory>src/main/resources</directory>
-						<filtering>false</filtering>
-					</resource>
-					<resource>
-                    	<directory>src/main/resources/external-config</directory>                                                
-                        <filtering>false</filtering>
-                    </resource>                                        
+						<filtering>false</filtering>						
+					</resource>										                                  
                     <resource>                                                
                         <directory>org/java/plugin/standard</directory>
                         <filtering>false</filtering>
@@ -220,16 +223,16 @@
 						<artifactId>maven-shade-plugin</artifactId>
 						<version>1.6</version>
 						<configuration>
-							<createDependencyReducedPom>true</createDependencyReducedPom>
+							<createDependencyReducedPom>true</createDependencyReducedPom>											
 							<filters>
 								<filter>
 									<artifact>*:*</artifact>
 									<excludes>
 										<exclude>META-INF/*.SF</exclude>
 										<exclude>META-INF/*.DSA</exclude>
-										<exclude>META-INF/*.RSA</exclude>
-									</excludes>
-								</filter>
+										<exclude>META-INF/*.RSA</exclude>										
+									</excludes>																							
+								</filter>					
 							</filters>
 						</configuration>
 						<executions>
@@ -440,10 +443,26 @@
              
              
             <!-- Opentripplanner -->
+            
+			<!-- dependency>
+				<groupId>org.onebusaway</groupId>
+				<artifactId>onebusaway-gtfs</artifactId>
+				<version>1.3.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-math3</artifactId>
+				<version>3.0</version>
+			</dependency>
+			<dependency>
+			  <groupId>org.geotools</groupId>
+			  <artifactId>gt-referencing</artifactId>
+			  <version>2.5.0</version>
+			</dependency -->
 			<dependency>
             	<groupId>org.opentripplanner</groupId>
                 <artifactId>opentripplanner-graph-builder</artifactId>
-                <version>0.9.1</version>
+                <version>0.9.1</version>                                              
                 <exclusions>
                 	<exclusion>
                     	<groupId>org.slf4j</groupId>
@@ -453,8 +472,46 @@
                     	<groupId>crosby.binary</groupId>
                         <artifactId>osmpbf</artifactId>
                     </exclusion>
-                </exclusions>
+                </exclusions>                               
             </dependency>
+            <dependency>
+				<groupId>org.opentripplanner</groupId>
+				<artifactId>openstreetmap</artifactId>
+				<version>0.9.1</version>
+				<exclusions>   
+					<exclusion>
+                    	<groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>             
+                    <exclusion>
+                    	<groupId>crosby.binary</groupId>
+                        <artifactId>osmpbf</artifactId>
+                    </exclusion>
+                </exclusions>    
+			</dependency>
+			<dependency>
+				<groupId>org.opentripplanner</groupId>
+				<artifactId>opentripplanner-routing</artifactId>
+				<version>0.9.1</version>
+				<exclusions>   
+					<exclusion>
+                    	<groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>                               
+                </exclusions>    
+			</dependency>
+			<dependency>
+				<groupId>org.opentripplanner</groupId>
+				<artifactId>opentripplanner-utils</artifactId>
+				<version>0.9.1</version>
+				<exclusions>   
+					<exclusion>
+                    	<groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>                               
+                </exclusions>   
+			</dependency>
+             
              
              <!-- Mapsforge --> 
              <!-- IMPORTANT: to keep order in Osmosis libraries -->     
@@ -498,7 +555,25 @@
 
 	</dependencies>
 	
-	
+	<repositories>
+	    <repository>
+	        <id>projectLibs</id>
+	        <url>file://${project.basedir}/src/main/external-resources/lib</url>
+	    </repository>
+	    <repository>
+	    	<id>localRepo</id>
+	    	<url>file://${user.home}/.m2</url>
+	    </repository>
+	    <repository>
+	        <id>mavenCentral</id>
+	        <url>http://repo1.maven.org/maven2</url>
+	    </repository>	
+	    <!-- repository>
+	        <id>GeoTools</id>
+	        <url>http://download.osgeo.org/webdav/geotools</url>
+	    </repository -->
+	     	     
+	</repositories>
 	
 	<distributionManagement>
 
