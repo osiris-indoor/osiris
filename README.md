@@ -25,19 +25,21 @@ The script builds all the components and runs the unit tests for each of them.
 
 #Running Osiris
 There are two groups of applications that need to be launched separately.
-First the map import command:
-1. To import a map called map.osm having MyMapId as identificator you can use
-```sh
-java -Devn=local -jar mapImport.jar MyMapId /path_to_my_map/map.osm
-```
-The first time you use the previous command the identificator will be created for the new map. Use again the same command to update the map: the map will be rewriten with the same identificator.
+
+1. First the map import command:
+
+  To import a map called map.osm having MyMapId as identificator you can use
+  ```sh
+  java -Devn=local -jar mapImport.jar MyMapId /path_to_my_map/map.osm
+  ```
+  The first time you use the previous command the identificator will be created for the new map. Use again the same command to   update the map: the map will be rewriten with the same identificator.
 
 2. Then the core services for building your apps:
-```sh
-cd osiris-map
-java -Denv=local -jar target/osiris-map.jar server src/main/resources/profiles/local/EnvConf.yml
-```
-After this you can start by uploading a map. Then you will be able to query Osiris and retrieve information of your buildings.
+  ```sh
+  cd osiris-map
+  java -Denv=local -jar target/osiris-map.jar server src/main/resources/profiles/local/EnvConf.yml
+  ```
+  After this you can start by uploading a map. Then you will be able to query Osiris and retrieve information of your buildings.
 
 #Android demo application
 You can use our sample aplication for testing your maps. Just get the code from its [repository] (https://github.com/osiris-indoor/mapviewer-android) and follow the instrucions to compile it using your own server adress.
