@@ -57,7 +57,7 @@ public class MapImportMain {
 			  }
 	            					 
 		}else{			
-			System.out.println("java -Denv=local -jar map-import.jar AppIdentifier FileOSMFormat");
+			System.out.println("java -Denv=local -jar osiris-map-import.jar AppIdentifier FileOSMFormat");
 			System.exit(-1);
 		}
 		
