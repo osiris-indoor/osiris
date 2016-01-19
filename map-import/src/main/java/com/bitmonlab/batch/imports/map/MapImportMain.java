@@ -28,7 +28,8 @@ public class MapImportMain {
 		String acceptanceTest = null;
 		boolean bAcceptanceTest = false;
 						
-		if (pArgs.length == 3 || pArgs.length==4) {		   		    	
+		if (pArgs.length == 2 || pArgs.length == 3 || pArgs.length==4) {		  
+			
 		    	appIdentifier = pArgs[0];
 		    
 		    	String fileName = pArgs[1];
@@ -37,23 +38,26 @@ public class MapImportMain {
 	            	System.out.println("File " + fileName  + " not found ");
 	            	System.exit(-1);
 	            }
-	            
-	            graphBuilder = pArgs[2];
-	            if(graphBuilder.equals("yes")){
-	            	bGraphBuilder = true;
-	            }else{
-	            	bGraphBuilder = false;
-	            }
-	            
-	            //Workaround to pass acceptance test
-	            if(pArgs.length==4){
-	            	if(pArgs[3].equals("acceptance-test")){
-	            		bAcceptanceTest = true;
-	            	}
-	            }
+	        
+			  if (pArgs.length == 3 || pArgs.length==4) {		 
+				
+		            graphBuilder = pArgs[2];
+		            if(graphBuilder.equals("yes")){
+		            	bGraphBuilder = true;
+		            }else{
+		            	bGraphBuilder = false;
+		            }
+		            
+		            //Workaround to pass acceptance test
+		            if(pArgs.length==4){
+		            	if(pArgs[3].equals("acceptance-test")){
+		            		bAcceptanceTest = true;
+		            	}
+		            }
+			  }
 	            					 
 		}else{			
-			System.out.println("java -Denv=local -jar mapImport.jar AppIdentifier FileOSMFormat graphBuilder(yes/no)");
+			System.out.println("java -Denv=local -jar map-import.jar AppIdentifier FileOSMFormat");
 			System.exit(-1);
 		}
 		
