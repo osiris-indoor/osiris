@@ -15,13 +15,13 @@
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
     
       
-	<context:component-scan base-package="com.bitmonlab.osiris" />		
+	<context:component-scan base-package="com.bitmonlab.osiris.api.core" />		
 	
-	<bean id="featureManagerImpl" class="com.bitmonlab.osiris.api.map.managers.impl.FeatureManagerImpl"></bean>
+	<bean id="featureManagerImpl" class="com.bitmonlab.osiris.api.core.map.managers.impl.FeatureManagerImpl"></bean>
 			    
 	<tx:annotation-driven />
 	
-	<mongo:repositories base-package="com.bitmonlab.osiris.api.map.dao.api" mongo-template-ref="mongoTemplate" repository-impl-postfix="CustomImpl"/>
+	<mongo:repositories base-package="com.bitmonlab.osiris.api.core.map.dao.api" mongo-template-ref="mongoTemplate" repository-impl-postfix="CustomImpl"/>
 		
 	<mongo:mongo host="${mongo.host}" port="${mongo.port}" />
 	<mongo:db-factory dbname="${mongo.database}" />
