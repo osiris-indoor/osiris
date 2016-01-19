@@ -1,4 +1,4 @@
-package com.bitmonlab.osiris.api.map.model.geojson;
+package com.bitmonlab.osiris.commons.map.model.geojson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import com.bitmonlab.commons.api.map.model.geojson.Feature;
+import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
 
 
 //@RunWith(MockitoJUnitRunner.class)

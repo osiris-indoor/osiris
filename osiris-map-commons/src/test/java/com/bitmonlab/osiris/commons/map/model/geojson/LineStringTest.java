@@ -1,4 +1,4 @@
-package com.bitmonlab.osiris.api.map.model.geojson;
+package com.bitmonlab.osiris.commons.map.model.geojson;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -20,7 +20,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 
-import com.bitmonlab.commons.api.map.model.geojson.LineString;
+import com.bitmonlab.osiris.commons.map.model.geojson.LineString;
 
 //@RunWith(PowerMockRunner.class)
 @RunWith(MockitoJUnitRunner.class)

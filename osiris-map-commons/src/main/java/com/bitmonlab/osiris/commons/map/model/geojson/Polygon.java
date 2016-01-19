@@ -1,4 +1,4 @@
-package com.bitmonlab.commons.api.map.model.geojson;
+package com.bitmonlab.osiris.commons.map.model.geojson;
 
 import java.util.Collection;
 import java.util.List;
