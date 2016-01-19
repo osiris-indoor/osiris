@@ -2,15 +2,15 @@
   <modelVersion>4.0.0</modelVersion>
   
   <groupId>com.bitmonlab.osiris.api</groupId>
-  <artifactId>map-services-core</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>osiris-map-services-core</artifactId>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   
-  <name>map-services-core</name>
+  <name>osiris-map-services-core</name>
   <url>http://maven.apache.org</url>
   
   <properties>
-  	<jar.name>map-services-core</jar.name>
+  	<jar.name>osiris-map-services-core</jar.name>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<timestamp>${maven.build.timestamp}</timestamp>
 	<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -22,7 +22,7 @@
   </properties>
   
   <build>
-		<finalName>map-services-core</finalName>
+		<finalName>osiris-map-services-core</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -351,13 +351,13 @@
             <!--  commons and core  BITMONLAB -->            
             <dependency>
 			    <groupId>com.bitmonlab.commons.api</groupId>
-			    <artifactId>map-commons</artifactId>
-			    <version>1.0</version>
+			    <artifactId>osiris-map-commons</artifactId>
+			    <version>1.0.0</version>
 			</dependency>	    
 			<dependency>
 			    <groupId>com.bitmonlab</groupId>
-			    <artifactId>bitmonlab-core</artifactId>
-			    <version>1.0</version>
+			    <artifactId>osiris-bitmonlab-core</artifactId>
+			    <version>1.0.0</version>
 			</dependency>
 			
 		
