@@ -3,7 +3,7 @@
   
   <groupId>com.bitmonlab.osiris.api</groupId>
   <artifactId>osiris-map</artifactId>
-  <version>1.0</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
   
   <name>osiris-map</name>
@@ -401,13 +401,18 @@
             <!--  commons and core  BITMONLAB -->            
             <dependency>
 			    <groupId>com.bitmonlab.commons.api</groupId>
-			    <artifactId>map-commons</artifactId>
-			    <version>1.0</version>
+			    <artifactId>osiris-map-commons</artifactId>
+			    <version>1.0.0</version>
 			</dependency>	    
 			<dependency>
 			    <groupId>com.bitmonlab</groupId>
-			    <artifactId>bitmonlab-core</artifactId>
-			    <version>1.0</version>
+			    <artifactId>osiris-bitmonlab-core</artifactId>
+			    <version>1.0.0</version>
+			</dependency>
+			<dependency>
+			    <groupId>com.bitmonlab.osiris.api</groupId>
+			    <artifactId>osiris-map-services-core</artifactId>
+			    <version>1.0.0</version>
 			</dependency>
 			
 		
