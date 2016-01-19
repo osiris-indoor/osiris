@@ -24,13 +24,14 @@ cd osiris-master
 The script builds all the components and runs the unit tests for each of them.
 
 #Running Osiris
-There are two groups of applications that need to be launched separately.
+There are two thhings to do in order to set an Osiris environment. First we need to import a map, second we will launch our Rest Services application. For both processes a MongoDB instance should be running.
 
 1. First the map import command:
 
   To import a map called map.osm having MyMapId as identificator you can use
   ```sh
-  java -Devn=local -jar mapImport.jar MyMapId /path_to_my_map/map.osm
+  cd osiris-map-import
+  java -Denv=local -jar target/map-import.jar MyMapId /path_to_my_map/map.osm
   ```
   The first time you use the previous command the identificator will be created for the new map. Use again the same command to   update the map: the map will be rewriten with the same identificator.
 
