@@ -28,7 +28,7 @@ public class MethodInvocationValidationAspect {
 	 * @return Object return of the execution.
 	 * @throws Throwable exception when a problem occurs in the invocation of the contract.
 	 */
-	@Around("execution(@com.bitmonlab.core.commons.validations.annotations.ValidationRequired public * *.*(..))")
+	@Around("execution(@com.bitmonlab.osiris.core.commons.validations.annotations.ValidationRequired public * *.*(..))")
 	public Object validateMethodContract(ProceedingJoinPoint joinPoint)	throws Throwable {
 		validateMethodParameters(joinPoint);
 		
