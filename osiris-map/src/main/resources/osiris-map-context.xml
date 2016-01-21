@@ -2,35 +2,24 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:aop="http://www.springframework.org/schema/aop"
   xmlns:p="http://www.springframework.org/schema/p"
+  xmlns:tx="http://www.springframework.org/schema/tx"
   xmlns:context="http://www.springframework.org/schema/context"
   xmlns:mongo="http://www.springframework.org/schema/data/mongo"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
   						http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+  						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
 	<context:property-placeholder location="classpath:profiles/${env}/env.properties" order="0"/>
-
+	
+							
+	<import resource="classpath*:osiris-map-services-core.xml"/>
+	
 	<context:component-scan base-package="com.bitmonlab" />
+		
+   	   	
+	<bean id="validationsOsirisMap" class="com.bitmonlab.osiris.core.validations.validator.Validations" />
 	
-	<bean id="validationsOsirisMap" class="com.bitmonlab.core.validations.validator.Validations" />
-	
-	<mongo:repositories base-package="com.bitmonlab.osiris.api.map.dao.api" mongo-template-ref="osirisGeolocationMongoTemplate" repository-impl-postfix="CustomImpl"/>
-	
-	<!-- BBDD Geolocation Mongo -->	
-	<bean id="osirisGeolocationMongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<constructor-arg name="mongoDbFactory" ref="osirisGeolocationMongoDbFactory" />
-	</bean>
-	
-	<mongo:db-factory id="osirisGeolocationMongoDbFactory" mongo-ref="osirisGeolocationMongo" dbname="${osirisGeolocation.mongo.database}" />
-
-	<mongo:mongo id="osirisGeolocationMongo" host="${osirisGeolocation.mongo.host}" port="${osirisGeolocation.mongo.port}">
-		<mongo:options connections-per-host="${osirisGeolocation.mongo.connectionsPerHost}"
-			threads-allowed-to-block-for-connection-multiplier="${osirisGeolocation.mongo.threadsAllowedToBlockForConnectionMultiplier}"
-			connect-timeout="${osirisGeolocation.mongo.connectTimeout}" max-wait-time="${osirisGeolocation.mongo.maxWaitTime}"
-			auto-connect-retry="${osirisGeolocation.mongo.autoConnectRetry}" socket-keep-alive="${osirisGeolocation.mongo.socketKeepAlive}"
-			socket-timeout="${osirisGeolocation.mongo.socketTimeout}" slave-ok="${osirisGeolocation.mongo.slaveOk}"
-			write-number="1" write-timeout="0" write-fsync="true" />
-	</mongo:mongo>
 
 </beans>

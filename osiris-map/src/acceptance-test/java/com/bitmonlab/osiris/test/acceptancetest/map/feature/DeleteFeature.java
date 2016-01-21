@@ -4,12 +4,12 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.bitmonlab.osiris.test.acceptancetest.map.commons.HttpResponse;
-import com.bitmonlab.osiris.api.map.transferobject.FeatureDTO;
-import com.bitmonlab.restsender.ClientResponse;
-import com.bitmonlab.restsender.Headers;
-import com.bitmonlab.restsender.RestMethod;
-import com.bitmonlab.restsender.RestRequestSender;
-import com.bitmonlab.restsender.SimpleClientResponse;
+import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
+import com.bitmonlab.osiris.restsender.ClientResponse;
+import com.bitmonlab.osiris.restsender.Headers;
+import com.bitmonlab.osiris.restsender.RestMethod;
+import com.bitmonlab.osiris.restsender.RestRequestSender;
+import com.bitmonlab.osiris.restsender.SimpleClientResponse;
 
 import cucumber.api.java.en.When;
 

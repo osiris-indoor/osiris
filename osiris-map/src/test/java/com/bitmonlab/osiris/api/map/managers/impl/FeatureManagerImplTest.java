@@ -7,12 +7,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.osiris.api.map.dao.api.FeatureRepository;
-import com.bitmonlab.osiris.api.map.exceptions.FeatureNotExistException;
-import com.bitmonlab.osiris.api.map.exceptions.MongoGeospatialException;
-import com.bitmonlab.osiris.api.map.managers.impl.FeatureManagerImpl;
-import com.bitmonlab.osiris.api.map.validations.ValidatorExistFeature;
-import com.bitmonlab.commons.api.map.model.geojson.Feature;
+import com.bitmonlab.osiris.api.core.map.dao.api.FeatureRepository;
+import com.bitmonlab.osiris.api.core.map.exceptions.FeatureNotExistException;
+import com.bitmonlab.osiris.api.core.map.exceptions.MongoGeospatialException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.FeatureManagerImpl;
+import com.bitmonlab.osiris.api.core.map.validations.ValidatorExistFeature;
+import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FeatureManagerImplTest {

@@ -13,16 +13,16 @@ import javax.ws.rs.core.Response;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.bitmonlab.core.validations.rest.violationProcessor.RestViolationProcessor;
-import com.bitmonlab.osiris.api.map.assemblers.MetaDataAssemblerImpl;
-import com.bitmonlab.osiris.api.map.exceptions.MetaDataNotExistsException;
-import com.bitmonlab.osiris.api.map.managers.impl.MetaDataManagerImpl;
+import com.bitmonlab.osiris.core.validations.rest.violationProcessor.RestViolationProcessor;
+import com.bitmonlab.osiris.api.core.map.assemblers.MetaDataAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.exceptions.MetaDataNotExistsException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.MetaDataManagerImpl;
+import com.bitmonlab.osiris.api.core.map.transferobject.MetaDataDTO;
 import com.bitmonlab.osiris.api.map.rest.api.MetaDataResource;
-import com.bitmonlab.osiris.api.map.transferobject.MetaDataDTO;
-import com.bitmonlab.commons.api.map.model.geojson.MetaData;
-import com.bitmonlab.core.assembler.AssemblyException;
-import com.bitmonlab.core.validations.validator.Validations;
-import com.bitmonlab.core.validations.annotations.ValidationRequired;
+import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.core.validations.validator.Validations;
+import com.bitmonlab.osiris.core.validations.annotations.ValidationRequired;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;

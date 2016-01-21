@@ -12,11 +12,11 @@ import javax.ws.rs.core.Response;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.bitmonlab.core.validations.validator.Validations;
-import com.bitmonlab.core.validations.annotations.ValidationRequired;
-import com.bitmonlab.core.validations.rest.violationProcessor.RestViolationProcessor;
-import com.bitmonlab.osiris.api.map.exceptions.MapFileNotExistsException;
-import com.bitmonlab.osiris.api.map.managers.api.MapFileManager;
+import com.bitmonlab.osiris.core.validations.validator.Validations;
+import com.bitmonlab.osiris.core.validations.annotations.ValidationRequired;
+import com.bitmonlab.osiris.core.validations.rest.violationProcessor.RestViolationProcessor;
+import com.bitmonlab.osiris.api.core.map.exceptions.MapFileNotExistsException;
+import com.bitmonlab.osiris.api.core.map.managers.api.MapFileManager;
 import com.bitmonlab.osiris.api.map.rest.api.MapFileResource;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;

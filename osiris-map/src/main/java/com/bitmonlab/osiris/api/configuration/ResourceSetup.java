@@ -9,7 +9,7 @@ import java.util.Set;
 
 import javax.ws.rs.ext.ExceptionMapper;
 
-import com.bitmonlab.core.errorhandler.RestErrorsHandler;
+import com.bitmonlab.osiris.core.errorhandler.RestErrorsHandler;
 import com.github.pnayak.dropwizard.spring.AutoWiredService;
 import com.sun.jersey.api.core.ResourceConfig;
 

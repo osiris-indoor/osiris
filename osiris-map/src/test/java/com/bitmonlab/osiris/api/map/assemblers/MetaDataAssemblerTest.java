@@ -10,10 +10,10 @@ import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import com.bitmonlab.osiris.api.map.assemblers.MetaDataAssemblerImpl;
-import com.bitmonlab.osiris.api.map.transferobject.MetaDataDTO;
-import com.bitmonlab.commons.api.map.model.geojson.MetaData;
-import com.bitmonlab.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.api.core.map.assemblers.MetaDataAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.transferobject.MetaDataDTO;
+import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({MetaDataAssemblerImpl.class})

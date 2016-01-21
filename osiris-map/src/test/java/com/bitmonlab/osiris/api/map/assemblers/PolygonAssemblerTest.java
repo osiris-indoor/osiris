@@ -14,13 +14,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.osiris.api.map.assemblers.PolygonAssemblerImpl;
-import com.bitmonlab.osiris.api.map.transferobject.LineStringDTO;
-import com.bitmonlab.osiris.api.map.transferobject.PolygonDTO;
-import com.bitmonlab.commons.api.map.model.geojson.LineString;
-import com.bitmonlab.commons.api.map.model.geojson.Polygon;
-import com.bitmonlab.core.assembler.Assembler;
-import com.bitmonlab.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.api.core.map.assemblers.PolygonAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.transferobject.LineStringDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.PolygonDTO;
+import com.bitmonlab.osiris.commons.map.model.geojson.LineString;
+import com.bitmonlab.osiris.commons.map.model.geojson.Polygon;
+import com.bitmonlab.osiris.core.assembler.Assembler;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PolygonAssemblerTest {

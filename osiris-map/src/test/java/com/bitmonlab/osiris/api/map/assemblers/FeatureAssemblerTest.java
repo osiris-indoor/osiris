@@ -15,20 +15,20 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.osiris.api.map.assemblers.FeatureAssemblerImpl;
-import com.bitmonlab.osiris.api.map.exceptions.InvalidGeometry;
-import com.bitmonlab.osiris.api.map.transferobject.FeatureDTO;
-import com.bitmonlab.osiris.api.map.transferobject.GeometryDTO;
-import com.bitmonlab.osiris.api.map.transferobject.LineStringDTO;
-import com.bitmonlab.osiris.api.map.transferobject.PointDTO;
-import com.bitmonlab.osiris.api.map.transferobject.PolygonDTO;
-import com.bitmonlab.commons.api.map.model.geojson.Feature;
-import com.bitmonlab.commons.api.map.model.geojson.Geometry;
-import com.bitmonlab.commons.api.map.model.geojson.LineString;
-import com.bitmonlab.commons.api.map.model.geojson.Point;
-import com.bitmonlab.commons.api.map.model.geojson.Polygon;
-import com.bitmonlab.core.assembler.Assembler;
-import com.bitmonlab.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.api.core.map.assemblers.FeatureAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.exceptions.InvalidGeometry;
+import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.GeometryDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.LineStringDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.PointDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.PolygonDTO;
+import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.commons.map.model.geojson.Geometry;
+import com.bitmonlab.osiris.commons.map.model.geojson.LineString;
+import com.bitmonlab.osiris.commons.map.model.geojson.Point;
+import com.bitmonlab.osiris.commons.map.model.geojson.Polygon;
+import com.bitmonlab.osiris.core.assembler.Assembler;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
 
 
 @RunWith(MockitoJUnitRunner.class)

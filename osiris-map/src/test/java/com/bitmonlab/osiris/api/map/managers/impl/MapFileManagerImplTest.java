@@ -10,9 +10,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.osiris.api.map.dao.api.MapFileRepository;
-import com.bitmonlab.osiris.api.map.exceptions.MapFileNotExistsException;
-import com.bitmonlab.osiris.api.map.managers.impl.MapFileManagerImpl;
+import com.bitmonlab.osiris.api.core.map.dao.api.MapFileRepository;
+import com.bitmonlab.osiris.api.core.map.exceptions.MapFileNotExistsException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.MapFileManagerImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MapFileManagerImplTest {

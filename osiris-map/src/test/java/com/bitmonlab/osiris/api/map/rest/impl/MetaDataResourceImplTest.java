@@ -13,12 +13,12 @@ import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-import com.bitmonlab.core.validations.validator.Validations;
-import com.bitmonlab.osiris.api.map.assemblers.MetaDataAssemblerImpl;
-import com.bitmonlab.osiris.api.map.managers.impl.MetaDataManagerImpl;
+import com.bitmonlab.osiris.core.validations.validator.Validations;
+import com.bitmonlab.osiris.api.core.map.assemblers.MetaDataAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.managers.impl.MetaDataManagerImpl;
+import com.bitmonlab.osiris.api.core.map.transferobject.MetaDataDTO;
 import com.bitmonlab.osiris.api.map.rest.impl.MetaDataResourceImpl;
-import com.bitmonlab.osiris.api.map.transferobject.MetaDataDTO;
-import com.bitmonlab.commons.api.map.model.geojson.MetaData;
+import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({MetaDataResourceImpl.class})

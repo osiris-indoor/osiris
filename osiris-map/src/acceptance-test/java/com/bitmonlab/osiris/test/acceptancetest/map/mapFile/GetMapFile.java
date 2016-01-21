@@ -10,9 +10,9 @@ import javax.inject.Named;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.bitmonlab.osiris.test.acceptancetest.map.commons.HttpResponse;
-import com.bitmonlab.restsender.ClientResponse;
-import com.bitmonlab.restsender.Headers;
-import com.bitmonlab.restsender.RestRequestSender;
+import com.bitmonlab.osiris.restsender.ClientResponse;
+import com.bitmonlab.osiris.restsender.Headers;
+import com.bitmonlab.osiris.restsender.RestRequestSender;
 import com.mongodb.DB;
 import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;

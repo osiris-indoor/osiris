@@ -13,8 +13,8 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-import com.bitmonlab.osiris.api.map.dao.impl.MapFileRepositoryCustomImpl;
-import com.bitmonlab.osiris.api.map.exceptions.MapFileNotExistsException;
+import com.bitmonlab.osiris.api.core.map.dao.impl.MapFileRepositoryCustomImpl;
+import com.bitmonlab.osiris.api.core.map.exceptions.MapFileNotExistsException;
 import com.mongodb.DB;
 import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;

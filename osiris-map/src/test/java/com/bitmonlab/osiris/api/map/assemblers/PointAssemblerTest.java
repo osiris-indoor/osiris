@@ -14,12 +14,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.osiris.api.map.assemblers.PointAssemblerImpl;
-import com.bitmonlab.osiris.api.map.exceptions.LatitudeValueException;
-import com.bitmonlab.osiris.api.map.exceptions.LongitudeValueException;
-import com.bitmonlab.osiris.api.map.transferobject.PointDTO;
-import com.bitmonlab.commons.api.map.model.geojson.Point;
-import com.bitmonlab.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.api.core.map.assemblers.PointAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.exceptions.LatitudeValueException;
+import com.bitmonlab.osiris.api.core.map.exceptions.LongitudeValueException;
+import com.bitmonlab.osiris.api.core.map.transferobject.PointDTO;
+import com.bitmonlab.osiris.commons.map.model.geojson.Point;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PointAssemblerTest {

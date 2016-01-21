@@ -14,15 +14,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.osiris.api.map.assemblers.FeatureAssemblerImpl;
-import com.bitmonlab.osiris.api.map.exceptions.QueryException;
-import com.bitmonlab.osiris.api.map.managers.impl.SearchManagerImpl;
+import com.bitmonlab.osiris.api.core.map.assemblers.FeatureAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.exceptions.QueryException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.SearchManagerImpl;
+import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.LayerDTO;
 import com.bitmonlab.osiris.api.map.rest.impl.SearchResourceImpl;
-import com.bitmonlab.osiris.api.map.transferobject.FeatureDTO;
-import com.bitmonlab.osiris.api.map.transferobject.LayerDTO;
-import com.bitmonlab.commons.api.map.model.geojson.Feature;
-import com.bitmonlab.core.assembler.AssemblyException;
-import com.bitmonlab.core.validations.validator.Validations;
+import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.core.validations.validator.Validations;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SearchResourceImplTest {
