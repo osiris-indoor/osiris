@@ -14,7 +14,7 @@
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<timestamp>${maven.build.timestamp}</timestamp>
 	<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
-	<main.class>com.bitmonlab.batch.imports.map.MapImportMain</main.class>
+	<main.class>com.bitmonlab.osiris.imports.map.MapImportMain</main.class>
 	<compiler.version>1.7</compiler.version>
 	<cucumber.version>1.1.1</cucumber.version>
 	<mockito.version>1.9.5</mockito.version>

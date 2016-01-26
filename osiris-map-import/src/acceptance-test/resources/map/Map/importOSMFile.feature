@@ -1,6 +1,6 @@
 Feature: Import a OSM file and transform in GeoJson format to mongoDB
 
-process: com.bitmonlab.batch.imports.map.MapImportMain
+process: com.bitmonlab.osiris.imports.map.MapImportMain
 
 As an application developer
 In order to import osm file
