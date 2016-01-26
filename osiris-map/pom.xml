@@ -19,6 +19,7 @@
 	<cucumber.version>1.1.1</cucumber.version>
   	<powermock.version>1.6.3</powermock.version>  	
   	<spring-data-mongo.version>1.1.1.RELEASE</spring-data-mongo.version>
+  	
   </properties>
   
   <build>
@@ -400,12 +401,12 @@
             
             <!--  commons and core  BITMONLAB -->            
             <dependency>
-			    <groupId>com.bitmonlab.commons.api</groupId>
+			    <groupId>com.bitmonlab.osiris.commons</groupId>
 			    <artifactId>osiris-map-commons</artifactId>
 			    <version>1.0.0</version>
 			</dependency>	    
 			<dependency>
-			    <groupId>com.bitmonlab</groupId>
+			    <groupId>com.bitmonlab.osiris.core</groupId>
 			    <artifactId>osiris-bitmonlab-core</artifactId>
 			    <version>1.0.0</version>
 			</dependency>
@@ -415,6 +416,8 @@
 			    <version>1.0.0</version>
 			</dependency>
 			
+			
+	
 		
     </dependencies>
    

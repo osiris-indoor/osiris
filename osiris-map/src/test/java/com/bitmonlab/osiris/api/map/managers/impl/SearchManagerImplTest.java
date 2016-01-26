@@ -10,12 +10,12 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 
-import com.bitmonlab.osiris.api.map.dao.api.FeatureRepository;
-import com.bitmonlab.osiris.api.map.dao.api.MapRepository;
-import com.bitmonlab.osiris.api.map.exceptions.QueryException;
-import com.bitmonlab.osiris.api.map.managers.impl.SearchManagerImpl;
-import com.bitmonlab.osiris.api.map.transferobject.LayerDTO;
-import com.bitmonlab.commons.api.map.model.geojson.Feature;
+import com.bitmonlab.osiris.api.core.map.dao.api.FeatureRepository;
+import com.bitmonlab.osiris.api.core.map.dao.api.MapRepository;
+import com.bitmonlab.osiris.api.core.map.exceptions.QueryException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.SearchManagerImpl;
+import com.bitmonlab.osiris.api.core.map.transferobject.LayerDTO;
+import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
 
 @RunWith(MockitoJUnitRunner.class)
 //@RunWith(PowerMockRunner.class)

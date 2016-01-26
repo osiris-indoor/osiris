@@ -9,10 +9,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.osiris.api.map.dao.api.MetaDataMapRepository;
-import com.bitmonlab.osiris.api.map.exceptions.MetaDataNotExistsException;
-import com.bitmonlab.osiris.api.map.managers.impl.MetaDataManagerImpl;
-import com.bitmonlab.commons.api.map.model.geojson.MetaData;
+import com.bitmonlab.osiris.api.core.map.dao.api.MetaDataMapRepository;
+import com.bitmonlab.osiris.api.core.map.exceptions.MetaDataNotExistsException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.MetaDataManagerImpl;
+import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
 
 
 

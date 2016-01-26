@@ -2,10 +2,10 @@ package com.bitmonlab.osiris.api.map.rest.api;
 
 import javax.ws.rs.core.Response;
 
-import com.bitmonlab.osiris.api.map.exceptions.FeatureNotExistException;
-import com.bitmonlab.osiris.api.map.exceptions.MongoGeospatialException;
-import com.bitmonlab.osiris.api.map.transferobject.FeatureDTO;
-import com.bitmonlab.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.api.core.map.exceptions.FeatureNotExistException;
+import com.bitmonlab.osiris.api.core.map.exceptions.MongoGeospatialException;
+import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
 
 public interface FeatureResource {
 	 	 

@@ -8,12 +8,12 @@ import javax.inject.Named;
 
 import junit.framework.Assert;
 
-import com.bitmonlab.osiris.api.map.transferobject.FeatureDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
 import com.bitmonlab.osiris.test.acceptancetest.map.commons.HttpResponse;
-import com.bitmonlab.restsender.ClientResponse;
-import com.bitmonlab.restsender.Headers;
-import com.bitmonlab.restsender.RestMethod;
-import com.bitmonlab.restsender.RestRequestSender;
+import com.bitmonlab.osiris.restsender.ClientResponse;
+import com.bitmonlab.osiris.restsender.Headers;
+import com.bitmonlab.osiris.restsender.RestMethod;
+import com.bitmonlab.osiris.restsender.RestRequestSender;
 import com.sun.jersey.api.client.GenericType;
 
 import cucumber.api.java.en.Given;

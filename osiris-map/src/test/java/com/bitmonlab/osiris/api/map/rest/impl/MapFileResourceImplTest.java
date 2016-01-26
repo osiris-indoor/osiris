@@ -14,9 +14,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.bitmonlab.core.validations.validator.Validations;
-import com.bitmonlab.osiris.api.map.exceptions.MapFileNotExistsException;
-import com.bitmonlab.osiris.api.map.managers.impl.MapFileManagerImpl;
+import com.bitmonlab.osiris.core.validations.validator.Validations;
+import com.bitmonlab.osiris.api.core.map.exceptions.MapFileNotExistsException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.MapFileManagerImpl;
 import com.bitmonlab.osiris.api.map.rest.impl.MapFileResourceImpl;
 
 @RunWith(MockitoJUnitRunner.class)

@@ -18,9 +18,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Query;
 
-import com.bitmonlab.osiris.api.map.dao.impl.MapRepositoryCustomImpl;
-import com.bitmonlab.osiris.api.map.exceptions.QueryException;
-import com.bitmonlab.commons.api.map.model.geojson.Feature;
+import com.bitmonlab.osiris.api.core.map.dao.impl.MapRepositoryCustomImpl;
+import com.bitmonlab.osiris.api.core.map.exceptions.QueryException;
+import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
 import com.mongodb.BasicDBObject;
 
 @RunWith(PowerMockRunner.class)

@@ -4,7 +4,7 @@ import javax.ws.rs.core.Response.Status;
 
 import org.junit.Assert;
 
-import com.bitmonlab.restsender.SimpleClientResponse;
+import com.bitmonlab.osiris.restsender.SimpleClientResponse;
 
 import cucumber.api.java.en.Then;
 

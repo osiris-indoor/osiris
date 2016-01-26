@@ -108,13 +108,13 @@ logging:
     threshold: ALL
 
     # The file to which current statements will be logged.
-    currentLogFilename: logs/ubica2-map.log
+    currentLogFilename: logs/osiris-map.log
 
     # When the log file rotates, the archived log will be renamed to this and gzipped. The
     # %d is replaced with the previous day (yyyy-MM-dd). Custom rolling windows can be created
     # by passing a SimpleDateFormat-compatible format as an argument: "%d{yyyy-MM-dd-hh}".
 
-    archivedLogFilenamePattern: logs/ubica2-map-%d.log.gz
+    archivedLogFilenamePattern: logs/osiris-map-%d.log.gz
 
     # The number of archived files to keep.
     archivedFileCount: 2

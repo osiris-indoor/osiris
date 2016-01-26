@@ -19,17 +19,17 @@ import javax.ws.rs.core.Response;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.bitmonlab.core.validations.rest.violationProcessor.RestViolationProcessor;
-import com.bitmonlab.osiris.api.map.exceptions.FeatureNotExistException;
-import com.bitmonlab.osiris.api.map.exceptions.MongoGeospatialException;
-import com.bitmonlab.osiris.api.map.managers.api.FeatureManager;
+import com.bitmonlab.osiris.api.core.map.exceptions.FeatureNotExistException;
+import com.bitmonlab.osiris.api.core.map.exceptions.MongoGeospatialException;
+import com.bitmonlab.osiris.api.core.map.managers.impl.FeatureManagerImpl;
+import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
 import com.bitmonlab.osiris.api.map.rest.api.FeatureResource;
-import com.bitmonlab.osiris.api.map.transferobject.FeatureDTO;
-import com.bitmonlab.commons.api.map.model.geojson.Feature;
-import com.bitmonlab.core.assembler.Assembler;
-import com.bitmonlab.core.assembler.AssemblyException;
-import com.bitmonlab.core.validations.validator.Validations;
-import com.bitmonlab.core.validations.annotations.ValidationRequired;
+import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.core.assembler.Assembler;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
+import com.bitmonlab.osiris.core.validations.annotations.ValidationRequired;
+import com.bitmonlab.osiris.core.validations.rest.violationProcessor.RestViolationProcessor;
+import com.bitmonlab.osiris.core.validations.validator.Validations;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -44,7 +44,7 @@ import com.wordnik.swagger.annotations.ApiResponses;
 public class FeatureResourceImpl implements FeatureResource{	  
 		
 	@Inject
-	private FeatureManager featureManager;
+	private FeatureManagerImpl featureManager;
 
 	@Inject 
 	@Named("FeatureAssembler")

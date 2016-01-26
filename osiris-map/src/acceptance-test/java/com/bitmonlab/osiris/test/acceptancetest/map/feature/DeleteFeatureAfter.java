@@ -6,9 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.bitmonlab.restsender.Headers;
-import com.bitmonlab.restsender.RestMethod;
-import com.bitmonlab.restsender.RestRequestSender;
+import com.bitmonlab.osiris.restsender.Headers;
+import com.bitmonlab.osiris.restsender.RestMethod;
+import com.bitmonlab.osiris.restsender.RestRequestSender;
 
 import cucumber.api.java.After;
 
