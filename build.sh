@@ -4,7 +4,7 @@ command -v mvn >/dev/null 2>&1 || { echo >&2 -e "\e[31mmvn command is required b
 
 
 echo -e "\e[32mBuilding core libraries...\e[0m"
-cd bitmonlab-core  
+cd osiris-bitmonlab-core  
 mvn clean install
 STATUS=$?
 if [ $STATUS -ne 0 ]; then
@@ -13,7 +13,7 @@ if [ $STATUS -ne 0 ]; then
 fi
 
 echo -e "\e[32mBuilding map common libraries...\e[0m"
-cd ../map-commons  
+cd ../osiris-map-commons  
 mvn clean install
 STATUS=$?
 if [ $STATUS -ne 0 ]; then
@@ -22,7 +22,7 @@ if [ $STATUS -ne 0 ]; then
 fi
 
 echo -e "\e[32mBuilding map import services...\e[0m"
-cd ../map-import  
+cd ../osiris-map-import  
 mvn clean install -P FatJar
 STATUS=$?
 if [ $STATUS -ne 0 ]; then
@@ -31,7 +31,7 @@ if [ $STATUS -ne 0 ]; then
 fi
 
 echo -e "\e[32mBuilding core map services...\e[0m"
-cd ../map-services-core  
+cd ../osiris-map-services-core  
 mvn clean install
 STATUS=$?
 if [ $STATUS -ne 0 ]; then
