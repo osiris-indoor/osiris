@@ -48,3 +48,9 @@ if [ $STATUS -ne 0 ]; then
     exit 1;
 fi
 
+echo -e "\e[32mCopying files to bin directory...\e[0m"
+cd ..
+cp osiris-map-import/target/osiris-map-import.jar bin/
+cp osiris-map/target/osiris-map.jar bin/
+cp osiris-map/src/main/resources/profiles/local/EnvConf.yml bin/
+cp osiris-map/src/main/resources/profiles/local/env.properties bin/
