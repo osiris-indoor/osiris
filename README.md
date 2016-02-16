@@ -18,7 +18,7 @@ git clone https://github.com/osiris-indoor/osiris.git
 ```
 To build the project in linux, execute:
 ```sh
-cd osiris-master
+cd osiris
 ./build.sh
 ```
 The script builds all the components and runs the unit tests for each of them.
@@ -28,6 +28,7 @@ There are two thhings to do in order to set an Osiris environment. First we need
 
 1. First the map import command:
 
+  The importer reads OpenStreeMap maps in .osm format. You can find some sample maps [here](https://github.com/osiris-indoor/sample-maps)
   To import a map called map.osm having MyMapId as identificator you can use
   ```sh
   cd bin
@@ -37,7 +38,6 @@ There are two thhings to do in order to set an Osiris environment. First we need
 
 2. Then the core services for building your apps:
   ```sh
-  cd bin
   ./osiris.sh
   ```
   If everything goes well, you will see some debug information and fnially something like this:
