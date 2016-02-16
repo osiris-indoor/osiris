@@ -15,9 +15,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
 
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.commons.map.model.imports.LockImport;
 import com.bitmonlab.osiris.imports.map.dao.api.ImportRepositoryCustom;
 import com.bitmonlab.osiris.imports.map.exceptions.QueryException;
-import com.bitmonlab.osiris.imports.map.model.LockImport;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.BasicDBObject;

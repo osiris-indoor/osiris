@@ -86,7 +86,7 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 	
 	private final String file_obj = "Graph.obj";
 
-	public void importOSMFile(final String appIdentifier,
+	public Collection<Feature> importOSMFile(final String appIdentifier,
 							  final InputStream data, 
 							  boolean bGraphBuilder) 
 									  throws ExecutionNotAllowed, InternalErrorException, ParseMapException, QueryException, IOException, NoSuchAlgorithmException, BackgroundMapBuilderException, ImportFilesException, RoutingFileNotExistsException, GraphBuilderException{
@@ -167,6 +167,8 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 			saveImportFiles(appIdentifier, pathUser, bGraphBuilder);
 
 			deleteImportFilesDisk(pathUser);
+			
+			return featureCollection;
 									
 
 		} catch (JAXBException parseException) {
