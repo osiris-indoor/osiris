@@ -66,6 +66,6 @@ Scenario: get features without features
 	Then I receive a HTTP "OK"
 	And I check that 0 features are returned
 	
-Scenario: get features error query
-	When I invoke a getFeatureByQuery to all and query "{geometry: $geoWithin: {$geometry: {type: 'Polygon', coordinates: [[ [-1,-1], [0,50], [50,50], [50,0], [-1,-1] ]] }}}}" and applicationIdentifier "9999"
+Scenario: get features error query	
+	When I invoke a POST to "osiris/geolocation/territory/search" to all and query "{geometry: $geoWithin: {$geometry: {type: 'Polygon', coordinates: [[ [-1,-1], [0,50], [50,50], [50,0], [-1,-1] ]] }}}}" and applicationIdentifier "9999"
 	Then I receive a HTTP "BAD_REQUEST"
