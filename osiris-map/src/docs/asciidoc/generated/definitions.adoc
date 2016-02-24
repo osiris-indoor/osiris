@@ -1,0 +1,24 @@
+== Definitions
+=== FeatureDTO
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|properties|Set of properties|false|<<Map[string,string]>>|
+|id|Id of feature|false|string|
+|propertiesRelations|Parents properties|false|<<List[Map[string,string]]>>|
+|geometryDTO|Geometry of feature|true|<<GeometryDTO>>|
+|===
+
+=== MetaDataDTO
+[options="header"]
+|===
+|Name|Description|Required|Schema|Default
+|oSMChecksum||false|string|
+|routingChecksum|Checksum of routing file|true|string|
+|maxLatitude|Maximum latitude of map|false|string|
+|maxLongitude|Maximum longitude of map|false|string|
+|minLongitude|Minimum longitude of map|false|string|
+|minLatitude|Minimum latitude of map|false|string|
+|appId|Application identifier of map|true|string|
+|===
+
