@@ -3,3 +3,5 @@
 /.project
 /logs/
 /.settings/
+/src/docs/asciidoc/generated/
+/src/docs/asciidoc/markdown/

@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.HeaderParam;
-import javax.ws.rs.MatrixParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,7 +18,6 @@ import javax.ws.rs.core.Response;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.bitmonlab.osiris.core.validations.rest.violationProcessor.RestViolationProcessor;
 import com.bitmonlab.osiris.api.core.map.exceptions.QueryException;
 import com.bitmonlab.osiris.api.core.map.managers.api.SearchManager;
 import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
@@ -28,8 +26,9 @@ import com.bitmonlab.osiris.api.map.rest.api.SearchResource;
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
 import com.bitmonlab.osiris.core.assembler.Assembler;
 import com.bitmonlab.osiris.core.assembler.AssemblyException;
-import com.bitmonlab.osiris.core.validations.validator.Validations;
 import com.bitmonlab.osiris.core.validations.annotations.ValidationRequired;
+import com.bitmonlab.osiris.core.validations.rest.violationProcessor.RestViolationProcessor;
+import com.bitmonlab.osiris.core.validations.validator.Validations;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -66,10 +65,10 @@ public class SearchResourceImpl implements SearchResource{
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier, 
 			@ApiParam(value = "Query", required = true) @NotBlank @NotNull String query, 
 			@ApiParam(required=false,value="Layer",allowableValues="ALL,MAP,FEATURES",defaultValue="ALL") @QueryParam("layer") @DefaultValue("ALL") LayerDTO layer,
-			@ApiParam(required=false,value="Index of page",defaultValue="0") @MatrixParam("pageIndex") @DefaultValue("0") Integer pageIndex, 
-			@ApiParam(required=false,value="Size of page",defaultValue="20") @MatrixParam("pageSize") @DefaultValue("20") Integer pageSize,
-			@ApiParam(required=false,value="Order field") @MatrixParam("orderField") String orderField, 
-			@ApiParam(required=false,value="Order",allowableValues="ASC,DESC") @DefaultValue("ASC") @MatrixParam("order") String order) throws AssemblyException, QueryException {
+			@ApiParam(required=false,value="Index of page",defaultValue="0") @QueryParam("pageIndex") @DefaultValue("0") Integer pageIndex, 
+			@ApiParam(required=false,value="Size of page",defaultValue="20") @QueryParam("pageSize") @DefaultValue("20") Integer pageSize,
+			@ApiParam(required=false,value="Order field") @QueryParam("orderField") String orderField, 
+			@ApiParam(required=false,value="Order",allowableValues="ASC,DESC") @DefaultValue("ASC") @QueryParam("order") String order) throws AssemblyException, QueryException {
 						
 		validations.checkIsNotNullAndNotBlank(appIdentifier,query);
 		validations.checkIsNotNull(layer);
