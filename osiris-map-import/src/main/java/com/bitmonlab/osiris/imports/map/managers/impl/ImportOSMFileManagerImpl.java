@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
+
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.xml.bind.JAXBContext;
@@ -23,6 +24,8 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
+import org.eclipse.jetty.util.log.Log;
 import org.openstreetmap.osmosis.core.Osmosis;
 import org.opentripplanner.graph_builder.GraphBuilderTask;
 import org.opentripplanner.graph_builder.impl.CheckGeometryGraphBuilderImpl;
@@ -36,6 +39,8 @@ import org.opentripplanner.graph_builder.services.GraphBuilder;
 import org.opentripplanner.graph_builder.services.GraphBuilderWithGtfsDao;
 import org.opentripplanner.openstreetmap.impl.AnyFileBasedOpenStreetMapProviderImpl;
 import org.springframework.beans.factory.annotation.Value;
+
+import ch.qos.logback.classic.Level;
 
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
 import com.bitmonlab.osiris.commons.map.model.geojson.LineString;
@@ -85,6 +90,8 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 	private final String file_map = "background.map";
 	
 	private final String file_obj = "Graph.obj";
+	
+	private static Logger logger = Logger.getLogger(ImportOSMFileManagerImpl.class);
 
 	public Collection<Feature> importOSMFile(final String appIdentifier,
 							  final InputStream data, 
@@ -96,6 +103,8 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 		String jsonStr = null;
 		String objStr = null;
 		
+		
+		
 		final String pathUser = pathRootUser.concat(File.separator)
 				.concat(appIdentifier).concat(File.separator);
 		final String strOSMFile = pathUser.concat(file_osm);
@@ -103,7 +112,8 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 		File dPathUser = new File(pathUser);
 		if (!dPathUser.exists()) {
 			boolean createdPathUser=dPathUser.mkdirs();
-			if(!createdPathUser){
+			if(!createdPathUser){	
+				logger.error("Cannot create user path");
 				throw new InternalErrorException();
 			}
 		}
@@ -174,6 +184,8 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 		} catch (JAXBException parseException) {
 			throw new ParseMapException();
 		} catch (IOException ioe) {
+			logger.error("I/O Excepction");
+			ioe.printStackTrace();
 			throw new InternalErrorException();
 		} 
 			finally {
