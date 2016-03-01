@@ -1,22 +1,20 @@
 package com.bitmonlab.osiris.api.map.swagger;
 
+import static org.junit.Assert.assertTrue;
+import io.github.robwin.markup.builder.MarkupLanguage;
+import io.github.robwin.swagger2markup.Swagger2MarkupConverter;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-import io.github.robwin.markup.builder.MarkupLanguage;
-import io.github.robwin.swagger2markup.Swagger2MarkupConverter;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 
-import static org.junit.Assert.assertTrue;
-
-
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(PowerMockRunner.class)
 public class Swagger2MarkupTest {
 
     @Test
