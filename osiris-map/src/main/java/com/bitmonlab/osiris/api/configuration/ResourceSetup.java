@@ -1,17 +1,19 @@
 package com.bitmonlab.osiris.api.configuration;
 
-import com.yammer.dropwizard.config.Bootstrap;
-import com.yammer.dropwizard.config.Environment;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import javax.ws.rs.ext.ExceptionMapper;
 
+import org.eclipse.jetty.servlets.CrossOriginFilter;
+
 import com.bitmonlab.osiris.core.errorhandler.RestErrorsHandler;
 import com.github.pnayak.dropwizard.spring.AutoWiredService;
 import com.sun.jersey.api.core.ResourceConfig;
+import com.yammer.dropwizard.config.Bootstrap;
+import com.yammer.dropwizard.config.Environment;
+import com.yammer.dropwizard.config.FilterBuilder;
 
 
 public class ResourceSetup extends AutoWiredService<OsirisConfiguration>{
@@ -33,6 +35,14 @@ public class ResourceSetup extends AutoWiredService<OsirisConfiguration>{
 						 
 		super.runWithAppContext(configuration,environment,appContext);
 		
+		 // Allowing cross-origin
+        FilterBuilder filter = environment.addFilter(CrossOriginFilter.class, "crossOriginFilter");
+        filter.setInitParam("allowedOrigins", "*");
+        filter.setInitParam("allowedHeaders", "api_key,X-Requested-With,Content-Type,Accept,Origin,access-control-allow-origin,Access-Control-Allow-Origin,Authorization,Access-Control-Request-Method");
+        filter.setInitParam("allowedMethods", "GET,PUT,POST,DELETE,HEAD");
+        filter.addUrlPattern("/*");
+		
+					
 		// Remove all of Dropwizard's custom ExceptionMappers
         ResourceConfig jrConfig = environment.getJerseyResourceConfig();
         Set<Object> dwSingletons = jrConfig.getSingletons();
@@ -50,7 +60,6 @@ public class ResourceSetup extends AutoWiredService<OsirisConfiguration>{
 		
 		environment.addProvider(new RestErrorsHandler());
 		
-
 	}
 	
 }
