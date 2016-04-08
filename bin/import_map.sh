@@ -44,7 +44,7 @@ then
 
     #Try to import the map
     echo -e "\e[32mImporting $2\e[0m"
-    java -Denv=local -jar osiris-map-import.jar $1 $2
+    java -Denv=local -jar osiris-map-import.jar $1 "$2"
 else
     usage
 fi
