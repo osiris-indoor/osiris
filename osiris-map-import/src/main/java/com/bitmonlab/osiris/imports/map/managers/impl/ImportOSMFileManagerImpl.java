@@ -182,6 +182,7 @@ public class ImportOSMFileManagerImpl implements ImportOSMFileManager {
 									
 
 		} catch (JAXBException parseException) {
+			parseException.printStackTrace();
 			throw new ParseMapException();
 		} catch (IOException ioe) {
 			logger.error("I/O Excepction");
