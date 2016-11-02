@@ -14,7 +14,7 @@
 	<powermock.version>1.5</powermock.version>
 	<mockito.version>1.9.5</mockito.version>
 	<jersey.version>1.18</jersey.version>
-	<compiler.version>1.7</compiler.version>
+	<compiler.version>1.8</compiler.version>    
   </properties>
   
   <build>	

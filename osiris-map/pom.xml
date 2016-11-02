@@ -15,7 +15,7 @@
 	<timestamp>${maven.build.timestamp}</timestamp>
 	<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 	<main.class>com.bitmonlab.osiris.api.configuration.ResourceSetup</main.class>
-	<compiler.version>1.7</compiler.version>
+	<compiler.version>1.8</compiler.version>
 	<cucumber.version>1.1.1</cucumber.version>
   	<powermock.version>1.6.3</powermock.version>  	
   	<spring-data-mongo.version>1.1.1.RELEASE</spring-data-mongo.version>
