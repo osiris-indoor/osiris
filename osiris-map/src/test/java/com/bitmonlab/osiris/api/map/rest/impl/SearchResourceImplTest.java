@@ -15,10 +15,14 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.bitmonlab.osiris.api.core.map.assemblers.FeatureAssemblerImpl;
+import com.bitmonlab.osiris.api.core.map.assemblers.RoomAssemblerImpl;
 import com.bitmonlab.osiris.api.core.map.exceptions.QueryException;
+import com.bitmonlab.osiris.api.core.map.exceptions.RoomNotFoundException;
+import com.bitmonlab.osiris.api.core.map.managers.api.SearchManager;
 import com.bitmonlab.osiris.api.core.map.managers.impl.SearchManagerImpl;
 import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
 import com.bitmonlab.osiris.api.core.map.transferobject.LayerDTO;
+import com.bitmonlab.osiris.api.core.map.transferobject.RoomDTO;
 import com.bitmonlab.osiris.api.map.rest.impl.SearchResourceImpl;
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
 import com.bitmonlab.osiris.core.assembler.AssemblyException;
@@ -52,6 +56,47 @@ public class SearchResourceImplTest {
 	
 	@Mock
 	private Validations validations;
+	
+		
+	@Mock
+	private RoomAssemblerImpl roomAssembler;
+	
+	@Mock
+	private Feature room;
+	
+	@Mock
+	private RoomDTO roomDTO;	
+	
+	@Test
+	public void getRoomByLocationTest() throws AssemblyException, RoomNotFoundException{
+		//Fixture
+		Double longitude=60.0;
+		Double latitude=70.0;
+		Integer floor=3;
+		
+		Mockito.when(searchManagerImpl.getRoomByLocation(APP_IDENTIFIER, longitude, latitude, floor)).thenReturn(room);
+		Mockito.when(roomAssembler.createDataTransferObject(room)).thenReturn(roomDTO);
+				
+		//Experimentation
+		Response response = searchResourceImpl.getRoomByLocation(APP_IDENTIFIER, longitude, latitude, floor);
+					
+		//Expectation		
+		Mockito.verify(validations).checkIsNotNullAndNotBlank(APP_IDENTIFIER);
+		Mockito.verify(validations).checkMin(-180.0,longitude);
+		Mockito.verify(validations).checkMax(180.0,longitude);
+		Mockito.verify(validations).checkMin(-90.0,latitude);
+		Mockito.verify(validations).checkMax(90.0,latitude);
+		Mockito.verify(validations).checkIsNotNull(floor);
+		Mockito.verify(searchManagerImpl).getRoomByLocation(APP_IDENTIFIER, longitude, latitude, floor);
+		Mockito.verify(roomAssembler).createDataTransferObject(room);
+		
+		assertNotNull("Response must not be null",response);
+		assertEquals("The Status response is not the expected", 200, response.getStatus());
+		
+		RoomDTO roomResponseDTO=(RoomDTO)response.getEntity();
+		assertEquals("Response must be equals", roomDTO, roomResponseDTO);
+	}
+	
 	
 	@Test
 	public void getFeaturesByQueryTest() throws AssemblyException, QueryException{
