@@ -6,14 +6,12 @@ import javax.inject.Named;
 import org.junit.Assert;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-import com.bitmonlab.osiris.core.assembler.AssemblyException;
 import com.bitmonlab.osiris.api.core.map.assemblers.MetaDataAssemblerImpl;
 import com.bitmonlab.osiris.api.core.map.exceptions.MetaDataNotExistsException;
-import com.bitmonlab.osiris.api.core.map.exceptions.QueryException;
 import com.bitmonlab.osiris.api.core.map.managers.impl.MetaDataManagerImpl;
 import com.bitmonlab.osiris.api.core.map.transferobject.MetaDataDTO;
 import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
-import com.bitmonlab.osiris.restsender.RestRequestSender;
+import com.bitmonlab.osiris.core.assembler.AssemblyException;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
