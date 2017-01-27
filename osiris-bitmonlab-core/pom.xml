@@ -10,7 +10,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>    
  	<aspectj.version>1.7.2</aspectj.version>
-	<spring.version>3.2.1.RELEASE</spring.version>
+	<spring.version>4.3.5.RELEASE</spring.version>
 	<powermock.version>1.5</powermock.version>
 	<mockito.version>1.9.5</mockito.version>
 	<jersey.version>1.18</jersey.version>
