@@ -18,6 +18,7 @@ import com.bitmonlab.osiris.core.validations.validator.Validations;
 import com.bitmonlab.osiris.api.core.map.exceptions.MapFileNotExistsException;
 import com.bitmonlab.osiris.api.core.map.managers.impl.MapFileManagerImpl;
 import com.bitmonlab.osiris.api.map.rest.impl.MapFileResourceImpl;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MapFileResourceImplTest {
@@ -34,6 +35,9 @@ public class MapFileResourceImplTest {
 	@Mock
 	private Validations validations;
 	
+	@Mock
+	private BasicAuth principal;
+	
 	@Test
 	public void getFileMap() throws MapFileNotExistsException{
 		//Fixture
@@ -41,7 +45,7 @@ public class MapFileResourceImplTest {
 		Mockito.when(mapFileManagerImpl.getMapFile(appIdentifier)).thenReturn(inputStream);
 		
 		//Experimentation
-		Response response=mapFileResourceImpl.getMapFile(appIdentifier) ;
+		Response response=mapFileResourceImpl.getMapFile(principal, appIdentifier) ;
 		
 		//Expectations
 		Mockito.verify(validations).checkIsNotNullAndNotBlank(appIdentifier);

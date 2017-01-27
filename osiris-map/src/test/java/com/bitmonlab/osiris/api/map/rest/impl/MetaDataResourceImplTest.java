@@ -19,6 +19,7 @@ import com.bitmonlab.osiris.api.core.map.managers.impl.MetaDataManagerImpl;
 import com.bitmonlab.osiris.api.core.map.transferobject.MetaDataDTO;
 import com.bitmonlab.osiris.api.map.rest.impl.MetaDataResourceImpl;
 import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({MetaDataResourceImpl.class})
@@ -42,6 +43,9 @@ public class MetaDataResourceImplTest {
 	@Mock
 	private Validations validations;
 	
+	@Mock
+	private BasicAuth principal;
+	
 	@Test
 	public void getMetaData() throws Exception{
 				
@@ -52,7 +56,7 @@ public class MetaDataResourceImplTest {
 		Mockito.when(metaDataAssemblerImpl.createDataTransferObject(metaData)).thenReturn(metaDataDTO);
 		
 		//Experimentation
-		Response response = metaDataResourceImpl.getMetaData(appIdentifier);
+		Response response = metaDataResourceImpl.getMetaData(principal, appIdentifier);
 				
 		//Expectation	
 		Mockito.verify(validations).checkIsNotNullAndNotBlank(appIdentifier);

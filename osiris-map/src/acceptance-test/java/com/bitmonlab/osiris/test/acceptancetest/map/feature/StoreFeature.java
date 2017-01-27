@@ -52,7 +52,7 @@ public class StoreFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, pointDTO);
 						
-		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1") );	
+		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0") );	
 		
 		httpResponse.setResponse(response);		
 		
@@ -87,7 +87,7 @@ public class StoreFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, lineStringDTO);
 						
-		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1") );	
+		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0") );	
 		
 		httpResponse.setResponse(response);		
 		
@@ -151,7 +151,7 @@ public class StoreFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, polygonDTO);
 						
-		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1") );	
+		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0") );	
 		
 		httpResponse.setResponse(response);		
 		
@@ -173,7 +173,7 @@ public class StoreFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, null);
 		
-		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1") );	
+		response=sender.invoke(RestMethod.POST, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0") );	
 		
 		httpResponse.setResponse(response);		
 		

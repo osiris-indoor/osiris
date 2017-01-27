@@ -19,6 +19,7 @@ import com.bitmonlab.osiris.api.core.map.managers.impl.FeatureManagerImpl;
 import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
 import com.bitmonlab.osiris.api.map.rest.impl.FeatureResourceImpl;
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 import com.bitmonlab.osiris.core.assembler.AssemblyException;
 import com.bitmonlab.osiris.core.validations.validator.Validations;
 
@@ -51,6 +52,9 @@ public class FeatureResourceImplTest {
 	
 	@Mock
 	private Validations validations;
+	
+	@Mock
+	private BasicAuth principal;
 
 	@Test
 	public void storeFeature() throws AssemblyException, MongoGeospatialException{	
@@ -60,7 +64,7 @@ public class FeatureResourceImplTest {
 		Mockito.when(featureAssembler.createDataTransferObject(featureReturn)).thenReturn(featureDTOReturn); //Model Object --> DTO
 		
 		//Experimentation
-		Response response=featureResourceImpl.storeFeature(APP_IDENTIFIER,featureDTO);	
+		Response response=featureResourceImpl.storeFeature(principal, APP_IDENTIFIER,featureDTO);	
 		
 		//Expectations
 		Mockito.verify(validations).checkIsNotNullAndNotBlank(APP_IDENTIFIER);
@@ -81,7 +85,7 @@ public class FeatureResourceImplTest {
 		//Fixture
 		
 		//Experimentation
-		Response response=featureResourceImpl.deleteFeature(APP_IDENTIFIER,ID_FEATURE);
+		Response response=featureResourceImpl.deleteFeature(principal, APP_IDENTIFIER,ID_FEATURE);
 		
 		//Expectation
 		Mockito.verify(validations).checkIsNotNullAndNotBlank(APP_IDENTIFIER,ID_FEATURE);
@@ -102,7 +106,7 @@ public class FeatureResourceImplTest {
 		Mockito.when(featureAssembler.createDataTransferObject(featureReturn)).thenReturn(featureDTOReturn); //Model Object --> DTO
 				
 		//Experimentation
-		Response response=featureResourceImpl.updateFeature(APP_IDENTIFIER, idFeature, featureDTO);	
+		Response response=featureResourceImpl.updateFeature(principal, APP_IDENTIFIER, idFeature, featureDTO);	
 							
 			
 		//Expectations
@@ -125,7 +129,7 @@ public class FeatureResourceImplTest {
 		Mockito.when(featureAssembler.createDataTransferObject(feature)).thenReturn(featureDTO);
 		
 		//Experimentation
-		Response response = featureResourceImpl.getFeatureByID(APP_IDENTIFIER, ID_FEATURE);
+		Response response = featureResourceImpl.getFeatureByID(principal, APP_IDENTIFIER, ID_FEATURE);
 				
 		//Expectation	
 		Mockito.verify(validations).checkIsNotNullAndNotBlank(APP_IDENTIFIER,ID_FEATURE);

@@ -6,6 +6,7 @@ As an application developer
 In order to manage features of territory
 I want to query featurs according to query
 
+@deleteSecurityCredentials
 @deleteFeatures
 Scenario: get features within box of features
 	Given I store a feature of type point with latitude 5, longitude 5, altitude 10 and jsonObject with key "place" and value "burger" and applicationIdentifier "2"
@@ -23,7 +24,8 @@ Scenario: get features within box of features
     When I invoke a POST to "osiris/geolocation/territory/search" to feature and query "{geometry: {$geoWithin: {$geometry: {type: 'Polygon', coordinates: [[ [-1,-1], [0,50], [50,50], [50,0], [-1,-1] ]] }}}}" and applicationIdentifier "2"
     Then I receive a HTTP "OK"
     And I check that 3 features are returned
-    
+   
+@deleteSecurityCredentials
 @deleteFeatures
 Scenario: get features within box of map
 	Given I store a feature of type point with latitude 5, longitude 5, altitude 10 and jsonObject with key "place" and value "burger" and applicationIdentifier "2"
@@ -41,7 +43,8 @@ Scenario: get features within box of map
     When I invoke a POST to "osiris/geolocation/territory/search" to map and query "{geometry: {$geoWithin: {$geometry: {type: 'Polygon', coordinates: [ [ [ -4.658203125 , 39.926588421909436] , [ -4.658203125 , 40.83043687764923] , [ -2.39501953125 , 40.83043687764923] , [ -2.39501953125 , 39.926588421909436] , [ -4.658203125 , 39.926588421909436]]] }}}}" and applicationIdentifier "2"
     Then I receive a HTTP "OK"
     And I check that 11 features are returned
-    
+   
+@deleteSecurityCredentials    
 @deleteFeatures
 Scenario: get features within box of all
 	Given I store a feature of type point with latitude 5, longitude 5, altitude 10 and jsonObject with key "place" and value "burger" and applicationIdentifier "2"
@@ -60,12 +63,13 @@ Scenario: get features within box of all
     Then I receive a HTTP "OK"
     And I check that 17 features are returned
     
-
+@deleteSecurityCredentials
 Scenario: get features without features
 	When I invoke a POST to "osiris/geolocation/territory/search" to all and query "{geometry: {$geoWithin: {$geometry: {type: 'Polygon', coordinates: [[ [-1,-1], [0,50], [50,50], [50,0], [-1,-1] ]] }}}}" and applicationIdentifier "9999"
-	Then I receive a HTTP "OK"
-	And I check that 0 features are returned
+	Then I receive a HTTP "UNAUTHORIZED"
+	#And I check that 0 features are returned
 	
+@deleteSecurityCredentials	
 Scenario: get features error query	
 	When I invoke a POST to "osiris/geolocation/territory/search" to all and query "{geometry: $geoWithin: {$geometry: {type: 'Polygon', coordinates: [[ [-1,-1], [0,50], [50,50], [50,0], [-1,-1] ]] }}}}" and applicationIdentifier "9999"
-	Then I receive a HTTP "BAD_REQUEST"
+	Then I receive a HTTP "UNAUTHORIZED"

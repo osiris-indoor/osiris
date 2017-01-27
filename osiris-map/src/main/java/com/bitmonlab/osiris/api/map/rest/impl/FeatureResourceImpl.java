@@ -25,6 +25,7 @@ import com.bitmonlab.osiris.api.core.map.managers.impl.FeatureManagerImpl;
 import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
 import com.bitmonlab.osiris.api.map.rest.api.FeatureResource;
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 import com.bitmonlab.osiris.core.assembler.Assembler;
 import com.bitmonlab.osiris.core.assembler.AssemblyException;
 import com.bitmonlab.osiris.core.validations.annotations.ValidationRequired;
@@ -35,12 +36,13 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
+import com.yammer.dropwizard.auth.Auth;
 
 @Api("/osiris/geolocation/territory/feature")
 @Path("/osiris/geolocation/territory/feature")
 @Named
-@Consumes({ MediaType.APPLICATION_JSON })
-@Produces({ MediaType.APPLICATION_JSON })
+//@Consumes({ MediaType.APPLICATION_JSON })
+//@Produces({ MediaType.APPLICATION_JSON })
 public class FeatureResourceImpl implements FeatureResource{	  
 		
 	@Inject
@@ -65,7 +67,7 @@ public class FeatureResourceImpl implements FeatureResource{
 			@ApiResponse(code = 400, message = "Geometry is invalid"),
 			@ApiResponse(code = 400, message = "Mongo GeoJSON format is not correct"),
 			@ApiResponse(code = 400, message = "Invalid input parameter (header)")})
-	public Response storeFeature(
+	public Response storeFeature(@Auth BasicAuth principal,
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier,
 			@ApiParam(required=true, value="Feature") @Valid @NotNull FeatureDTO featureDTO) throws AssemblyException, MongoGeospatialException {
 		validations.checkIsNotNullAndNotBlank(appIdentifier);
@@ -84,7 +86,7 @@ public class FeatureResourceImpl implements FeatureResource{
 			@ApiResponse(code = 204, message = "Feature was deleted"),
 			@ApiResponse(code = 400, message = "Invalid input parameter (header)"),
 			@ApiResponse(code = 404, message = "Feature was not found")})
-	public Response deleteFeature(
+	public Response deleteFeature(@Auth BasicAuth principal,
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier, 
 			@ApiParam(required=true, value="Feature identifier") @NotBlank @NotNull @PathParam("idFeature") String idFeature) throws FeatureNotExistException {
 		// TODO Auto-generated method stub
@@ -106,7 +108,7 @@ public class FeatureResourceImpl implements FeatureResource{
 			@ApiResponse(code = 400, message = "Mongo GeoJSON format is not correct"),
 			@ApiResponse(code = 400, message = "Invalid input parameter (header)"),
 			@ApiResponse(code = 404, message = "Feature was not found")})
-	public Response updateFeature(
+	public Response updateFeature(@Auth BasicAuth principal,
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier, 
 			@ApiParam(required=true, value="Feature identifier") @NotBlank @NotNull @PathParam("idFeature") String idFeature, 
 			@ApiParam(required=true, value="Updated feature") @Valid @NotNull FeatureDTO featureDTO) throws AssemblyException, FeatureNotExistException, MongoGeospatialException {
@@ -127,7 +129,7 @@ public class FeatureResourceImpl implements FeatureResource{
 			@ApiResponse(code = 200, message = "Feature was found", response=FeatureDTO.class),
 			@ApiResponse(code = 400, message = "Invalid input parameter (header)"),
 			@ApiResponse(code = 404, message = "Feature was not found")})
-	public Response getFeatureByID(
+	public Response getFeatureByID(@Auth BasicAuth principal,
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier, 
 			@ApiParam(required=true, value="Feature identifier") @NotBlank @NotNull @PathParam("idFeature") String idFeature) throws AssemblyException, FeatureNotExistException {
 		// TODO Auto-generated method stub

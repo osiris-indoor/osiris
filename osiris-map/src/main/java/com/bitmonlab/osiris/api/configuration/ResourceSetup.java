@@ -6,43 +6,50 @@ import java.util.Set;
 
 import javax.ws.rs.ext.ExceptionMapper;
 
-import org.eclipse.jetty.servlets.CrossOriginFilter;
+import org.eclipse.jetty.server.session.SessionHandler;
 
+import com.bitmonlab.osiris.api.security.dropwizard.DropwizardAuthenticator;
+import com.bitmonlab.osiris.api.security.dropwizard.SpringSecurityCredentials;
+import com.bitmonlab.osiris.api.security.dropwizard.SpringSecurityProvider;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 import com.bitmonlab.osiris.core.errorhandler.RestErrorsHandler;
 import com.github.pnayak.dropwizard.spring.AutoWiredService;
+import com.google.common.cache.CacheBuilderSpec;
 import com.sun.jersey.api.core.ResourceConfig;
+import com.yammer.dropwizard.auth.CachingAuthenticator;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
-import com.yammer.dropwizard.config.FilterBuilder;
 
 
 public class ResourceSetup extends AutoWiredService<OsirisConfiguration>{
 		
 	public ResourceSetup() {
-		super("ResourceSetup", "com.bitmonlab.osiris.api");
+		super("ResourceSetup", "com.bitmonlab.osiris.api");		
 	}	
+	
+	
 	
 	public static void main(String[] args) throws Exception {
 		new ResourceSetup().run(args);
 	}		
 	
 	public void initialize(Bootstrap<OsirisConfiguration> bootstrap) {
+		
 		bootstrap.setName("ResourceSetup");		
 	}	
 	
 	
+	
+
 	public void run(OsirisConfiguration configuration, Environment environment) throws Exception {
-						 
+		
+				
 		super.runWithAppContext(configuration,environment,appContext);
 		
-		 // Allowing cross-origin
-        FilterBuilder filter = environment.addFilter(CrossOriginFilter.class, "crossOriginFilter");
-        filter.setInitParam("allowedOrigins", "*");
-        filter.setInitParam("allowedHeaders", "api_key,X-Requested-With,Content-Type,Accept,Origin,access-control-allow-origin,Access-Control-Allow-Origin,Authorization,Access-Control-Request-Method");
-        filter.setInitParam("allowedMethods", "GET,PUT,POST,DELETE,HEAD");
-        filter.addUrlPattern("/*");
-		
-					
+		appContext.registerShutdownHook();
+		appContext.scan("com.bitmonlab.osiris.api");
+				
+							
 		// Remove all of Dropwizard's custom ExceptionMappers
         ResourceConfig jrConfig = environment.getJerseyResourceConfig();
         Set<Object> dwSingletons = jrConfig.getSingletons();
@@ -58,8 +65,24 @@ public class ResourceSetup extends AutoWiredService<OsirisConfiguration>{
             jrConfig.getSingletons().remove(s);
         }
 		
-		environment.addProvider(new RestErrorsHandler());
 		
+        environment.addProvider(new RestErrorsHandler());
+        
+        // Allowing cross-origin    
+		environment.addFilter(CORSFilter.class, "/*");
+		
+		//Security config
+		environment.setSessionHandler(new SessionHandler());
+		DropwizardAuthenticator authenticator = appContext.getBean(DropwizardAuthenticator.class);
+				
+    	CachingAuthenticator<SpringSecurityCredentials, BasicAuth> cachingAuthenticator = 
+    			CachingAuthenticator.wrap(authenticator, 
+    					CacheBuilderSpec.parse(configuration.getAuthenticationCachePolicy()));
+    	appContext.getBeanFactory().registerSingleton(DropwizardAuthenticator.class.getName(), cachingAuthenticator);		 
+		new SpringSecurityProvider(appContext).registerProvider(environment);
+		
+ 	
+	
 	}
 	
 }

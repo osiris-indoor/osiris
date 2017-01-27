@@ -50,7 +50,7 @@ public class UpdateFeature {
 		FeatureDTO feature =  preconditionStoreFeature.getResponse().getEntity();		
 		String idFeature = feature.getId();
 		
-		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"));	
+		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));	
 		
 		httpResponse.setResponse(response);
 		
@@ -78,7 +78,7 @@ public class UpdateFeature {
 		FeatureDTO feature =  preconditionStoreFeature.getResponse().getEntity();		
 		String idFeature = feature.getId();
 		
-		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"));	
+		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));	
 		
 		httpResponse.setResponse(response);
 		
@@ -139,7 +139,7 @@ public class UpdateFeature {
 		FeatureDTO feature =  preconditionStoreFeature.getResponse().getEntity();		
 		String idFeature = feature.getId();
 		
-		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"));	
+		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));	
 		
 		httpResponse.setResponse(response);
 		
@@ -158,7 +158,7 @@ public class UpdateFeature {
 		FeatureDTO feature =  preconditionStoreFeature.getResponse().getEntity();		
 		String idFeature = feature.getId();
 		
-		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"));	
+		response=sender.invoke(RestMethod.PUT, url + "/" + idFeature , featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));	
 		
 		httpResponse.setResponse(response);
 		
@@ -176,7 +176,7 @@ public class UpdateFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, pointDTO);
 					
-		response=sender.invoke(RestMethod.PUT, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"));	
+		response=sender.invoke(RestMethod.PUT, url, featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));	
 		
 		httpResponse.setResponse(response);
 		

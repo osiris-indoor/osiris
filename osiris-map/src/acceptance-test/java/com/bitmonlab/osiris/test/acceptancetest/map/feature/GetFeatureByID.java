@@ -34,7 +34,7 @@ public class GetFeatureByID {
 		
 		FeatureDTO featureDTO = responsePrecondition.getEntity();
 		 
-		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1"));	
+		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1") , new Headers("Authorization", "Basic cm9vdDoxMjM0"));	
 		
 		httpResponse.setResponse(response);
 	    
@@ -43,7 +43,7 @@ public class GetFeatureByID {
 	@When("^I invoke a GET to \"([^\"]*)\"$")
 	public void I_invoke_a_GET_to(String url) throws Throwable {
 	    // Express the Regexp above with the code you wish you had
-		response= sender.invoke(RestMethod.GET, url , new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"));	
+		response= sender.invoke(RestMethod.GET, url , new GenericType<FeatureDTO>(){}, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));	
 		
 		httpResponse.setResponse(response);
 	}

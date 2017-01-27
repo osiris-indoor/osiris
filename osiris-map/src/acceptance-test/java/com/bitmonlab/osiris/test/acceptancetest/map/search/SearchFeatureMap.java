@@ -42,7 +42,7 @@ public class SearchFeatureMap {
 	@When("^I invoke a POST to \"([^\"]*)\" to feature and query \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\"$")
 	public void I_invoke_a_POST_to_to_feature_and_query_and_applicationIdentifier(String url, String query, String appID){
 
-		response=sender.invoke(RestMethod.POST, url+"?layer=FEATURES", query, new GenericType<Collection<FeatureDTO>>(){}, new Headers("api_key", appID));		
+		response=sender.invoke(RestMethod.POST, url+"?layer=FEATURES", query, new GenericType<Collection<FeatureDTO>>(){}, new Headers("api_key", appID), new Headers("Authorization", "Basic cm9vdDoxMjM0"));		
 		
 		httpResponse.setResponse(response);
 	}
@@ -50,7 +50,7 @@ public class SearchFeatureMap {
 	@When("^I invoke a POST to \"([^\"]*)\" to map and query \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\"$")
 	public void I_invoke_a_POST_to_to_map_and_query_and_applicationIdentifier(String url, String query, String appID){
 
-		response=sender.invoke(RestMethod.POST, url+"?layer=MAP", query, new GenericType<Collection<FeatureDTO>>(){}, new Headers("api_key", appID));		
+		response=sender.invoke(RestMethod.POST, url+"?layer=MAP", query, new GenericType<Collection<FeatureDTO>>(){}, new Headers("api_key", appID), new Headers("Authorization", "Basic cm9vdDoxMjM0"));		
 		
 		httpResponse.setResponse(response);
 	}
@@ -58,7 +58,7 @@ public class SearchFeatureMap {
 	@When("^I invoke a POST to \"([^\"]*)\" to all and query \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\"$")
 	public void I_invoke_a_POST_to_to_all_and_query_and_applicationIdentifier(String url, String query, String appID) throws Throwable {
 		
-		response=sender.invoke(RestMethod.POST, url+"?layer=ALL", query, new GenericType<Collection<FeatureDTO>>(){}, new Headers("api_key", appID));		
+		response=sender.invoke(RestMethod.POST, url+"?layer=ALL", query, new GenericType<Collection<FeatureDTO>>(){}, new Headers("api_key", appID), new Headers("Authorization", "Basic cm9vdDoxMjM0"));		
 		
 		httpResponse.setResponse(response);
 	}

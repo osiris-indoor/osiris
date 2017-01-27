@@ -34,7 +34,7 @@ public class CheckWithGetFeature {
 	    
 		FeatureDTO featureDTO = response.getEntity();		
 		
-		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1"));
+		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));
 				
 		Assert.assertEquals("The response must be a " + responseExpected, Status.valueOf(responseExpected).getStatusCode(),response.getStatus().getStatusCode());
 		
@@ -62,7 +62,7 @@ public class CheckWithGetFeature {
 
 		FeatureDTO featureDTO = response.getEntity();		
 		
-		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1"));
+		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));
 				
 		Assert.assertEquals("The response must be a " + responseExpected, Status.valueOf(responseExpected).getStatusCode(),response.getStatus().getStatusCode());
 		
@@ -104,7 +104,7 @@ public class CheckWithGetFeature {
 
 		FeatureDTO featureDTO = response.getEntity();		
 		
-		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1"));
+		response= sender.invoke(RestMethod.GET, url + "/" + featureDTO.getId(), FeatureDTO.class, new Headers("api_key", "1"), new Headers("Authorization", "Basic cm9vdDoxMjM0"));
 				
 		Assert.assertEquals("The response must be a " + responseExpected, Status.valueOf(responseExpected).getStatusCode(),response.getStatus().getStatusCode());
 		

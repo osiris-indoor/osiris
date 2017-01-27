@@ -18,11 +18,13 @@ import com.bitmonlab.osiris.core.validations.rest.violationProcessor.RestViolati
 import com.bitmonlab.osiris.api.core.map.exceptions.MapFileNotExistsException;
 import com.bitmonlab.osiris.api.core.map.managers.api.MapFileManager;
 import com.bitmonlab.osiris.api.map.rest.api.MapFileResource;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
+import com.yammer.dropwizard.auth.Auth;
 
 @Api("/osiris/geolocation/territory/map/file")
 @Path("/osiris/geolocation/territory/map/file")
@@ -44,7 +46,7 @@ public class MapFileResourceImpl  implements MapFileResource{
 		  @ApiResponse(code = 200, message = ".map file was found", response=InputStream.class),
 		  @ApiResponse(code = 400, message = "Invalid input parameter (header)"),
 		  @ApiResponse(code = 404, message = ".map file was not found")})
-  public Response getMapFile(
+  public Response getMapFile(@Auth BasicAuth principal,
 		  @ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier) throws MapFileNotExistsException{
 	  validations.checkIsNotNullAndNotBlank(appIdentifier);
 	  InputStream mapFile=mapFileManager.getMapFile(appIdentifier);

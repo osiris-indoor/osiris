@@ -1,3 +1,6 @@
+cache:
+  authenticationCachePolicy: maximumSize=10000, expireAfterAccess=10m
+
 # HTTP-specific options.
 http:
 

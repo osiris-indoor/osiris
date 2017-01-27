@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.bitmonlab.osiris.test.acceptancetest.map.commons.HttpResponse;
+import com.bitmonlab.osiris.test.acceptancetest.map.commons.SecurityCredentials;
 import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
 import com.bitmonlab.osiris.api.core.map.transferobject.MetaDataDTO;
 import com.bitmonlab.osiris.restsender.ClientResponse;
@@ -29,6 +30,9 @@ public class GetMetaData {
 	@Named("osirisGeolocationMongoTemplate")
 	private MongoTemplate mongoTemplate;
 	
+	@Inject
+	private SecurityCredentials securityCredentials;
+	
 	private ClientResponse<MetaDataDTO> response;
 	
 	@Inject
@@ -36,8 +40,8 @@ public class GetMetaData {
 	
 	private final static String collectionMetaData="Metadata";
 	
-	@Given("^I have a map with appId \"([^\"]*)\" and metadata osmChecksum \"([^\"]*)\", routingChecksum \"([^\"]*)\", minLat \"([^\"]*)\", minLon \"([^\"]*)\", maxLat \"([^\"]*)\" and maxLon \"([^\"]*)\"$")
-	public void I_have_a_map_with_appId_and_metadata_osmChecksum_routingChecksum_minLat_minLon_maxLat_and_maxLon(String appId, String osmChecksum, String routingChecksum, String minLat, String minLon, String maxLat, String maxLon){
+	@Given("^I have a map with an APPLICATIONID \"([^\"]*)\" and metadata osmChecksum \"([^\"]*)\", routingChecksum \"([^\"]*)\", minLat \"([^\"]*)\", minLon \"([^\"]*)\", maxLat \"([^\"]*)\" and maxLon \"([^\"]*)\"$")
+	public void I_have_a_map_with_an_APPLICATIONID_and_metadata_osmChecksum_routingChecksum_minLat_minLon_maxLat_and_maxLon(String appId, String osmChecksum, String routingChecksum, String minLat, String minLon, String maxLat, String maxLon){
 	    // Express the Regexp above with the code you wish you had
 		MetaData metadata=createMetaData(appId, osmChecksum, routingChecksum, minLat, minLon, maxLat, maxLon);
 		mongoTemplate.save(metadata, collectionMetaData);
@@ -46,7 +50,11 @@ public class GetMetaData {
 	@When("^I invoke a GET metadata to \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\"$")
 	public void I_invoke_a_GET_metadata_to_and_applicationIdentifier(String url, String appId){
 	    // Express the Regexp above with the code you wish you had
-		response= sender.invoke(RestMethod.GET, url , new GenericType<MetaDataDTO>(){}, new Headers("api_key", appId));				
+		
+		securityCredentials.createCredential(appId, "root", "1234");
+		
+		
+		response= sender.invoke(RestMethod.GET, url , new GenericType<MetaDataDTO>(){}, new Headers("api_key", appId), new Headers("Authorization", "Basic cm9vdDoxMjM0"));				
 		httpResponse.setResponse(response);
 	}
 

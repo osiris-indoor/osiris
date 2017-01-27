@@ -29,6 +29,7 @@ import com.bitmonlab.osiris.api.core.map.transferobject.LayerDTO;
 import com.bitmonlab.osiris.api.core.map.transferobject.RoomDTO;
 import com.bitmonlab.osiris.api.map.rest.api.SearchResource;
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 import com.bitmonlab.osiris.core.assembler.Assembler;
 import com.bitmonlab.osiris.core.assembler.AssemblyException;
 import com.bitmonlab.osiris.core.validations.annotations.ValidationRequired;
@@ -39,6 +40,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
+import com.yammer.dropwizard.auth.Auth;
 
 @Api("/osiris/geolocation/territory/search")
 @Path("/osiris/geolocation/territory/search")
@@ -70,7 +72,7 @@ public class SearchResourceImpl implements SearchResource{
 			@ApiResponse(code = 200, message = "Features were found", response=FeatureDTO.class),
 			@ApiResponse(code = 400, message = "Invalid input parameter (header)"),
 			@ApiResponse(code = 400, message = "Query is not correct")})
-	public Response getFeaturesByQuery(
+	public Response getFeaturesByQuery(@Auth BasicAuth principal,
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier, 
 			@ApiParam(value = "Query", required = true) @NotBlank @NotNull String query, 
 			@ApiParam(required=false,value="Layer",allowableValues="ALL,MAP,FEATURES",defaultValue="ALL") @QueryParam("layer") @DefaultValue("ALL") LayerDTO layer,
@@ -107,7 +109,7 @@ public class SearchResourceImpl implements SearchResource{
 			@ApiResponse(code = 400, message = "Invalid input parameter"),
 			@ApiResponse(code = 404, message = "Room not found"),
 			@ApiResponse(code = 500, message = "Problem in the system")})
-	public Response getRoomByLocation(
+	public Response getRoomByLocation(@Auth BasicAuth principal,
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier, 			
 			@ApiParam(value="Longitude of location", required=true) @Min(-180) @Max(180) @NotNull @QueryParam("longitude") Double longitude,
 			@ApiParam(value="Latitude of location", required=true) @Min(-90) @Max(90) @NotNull @QueryParam("latitude") Double latitude,

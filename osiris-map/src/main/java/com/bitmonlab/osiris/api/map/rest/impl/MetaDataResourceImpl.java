@@ -20,6 +20,7 @@ import com.bitmonlab.osiris.api.core.map.managers.impl.MetaDataManagerImpl;
 import com.bitmonlab.osiris.api.core.map.transferobject.MetaDataDTO;
 import com.bitmonlab.osiris.api.map.rest.api.MetaDataResource;
 import com.bitmonlab.osiris.commons.map.model.geojson.MetaData;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 import com.bitmonlab.osiris.core.assembler.AssemblyException;
 import com.bitmonlab.osiris.core.validations.validator.Validations;
 import com.bitmonlab.osiris.core.validations.annotations.ValidationRequired;
@@ -28,6 +29,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
+import com.yammer.dropwizard.auth.Auth;
 
 @Api("/osiris/geolocation/territory/map/metadata")
 @Path("/osiris/geolocation/territory/map/metadata")
@@ -54,7 +56,7 @@ public class MetaDataResourceImpl implements MetaDataResource {
 			@ApiResponse(code = 200, message = "Metadata of map was found", response=MetaDataDTO.class),
 			@ApiResponse(code = 400, message = "Invalid input parameter (header)"),
 			@ApiResponse(code = 400, message = "Metadata of map was not found")})			 
-	public Response getMetaData(
+	public Response getMetaData(@Auth BasicAuth principal,
 			@ApiParam(value = "Application identifier", required = true) @NotBlank @NotNull @HeaderParam("api_key") String appIdentifier) throws AssemblyException, MetaDataNotExistsException {
 		// TODO Auto-generated method stub		
 		validations.checkIsNotNullAndNotBlank(appIdentifier);

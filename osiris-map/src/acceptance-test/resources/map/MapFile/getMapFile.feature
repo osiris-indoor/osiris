@@ -6,11 +6,13 @@ As an application developer
 In order to draw map from client
 I want to get .map file  
 
+@deleteSecurityCredentials
 Scenario: get .map file of application
-      Given I have a map file with appId "1"
+      Given I have a map file with APPID "1"
       When I invoke a GET to "osiris/geolocation/territory/map/file" and applicationIdentifier "1" to get .map file
       Then I receive a HTTP "OK"   
       
+@deleteSecurityCredentials      
 Scenario: get .map file of application without stored .map
      When I invoke a GET to "osiris/geolocation/territory/map/file" and applicationIdentifier "98761205478" to get .map file
-     Then I receive a HTTP "NOT_FOUND"                    
+     Then I receive a HTTP "UNAUTHORIZED"                    

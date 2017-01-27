@@ -32,7 +32,7 @@ public class DeleteFeatureAfter {
 				String idObject = idsDelete.get(i);
 				String idApp = idsApp.get(i);
 				
-				sender.invoke(RestMethod.DELETE, "osiris/geolocation/territory/feature/" + idObject, new Headers("api_key", idApp));			
+				sender.invoke(RestMethod.DELETE, "osiris/geolocation/territory/feature/" + idObject, new Headers("api_key", idApp), new Headers("Authorization", "Basic cm9vdDoxMjM0"));			
 				//Assert.assertEquals("The response must be a  NO_CONTENT", Status.valueOf("NO_CONTENT").getStatusCode(),response.getStatus().getStatusCode());
 										
 			}

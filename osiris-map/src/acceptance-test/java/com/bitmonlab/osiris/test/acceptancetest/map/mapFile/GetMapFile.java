@@ -38,8 +38,8 @@ public class GetMapFile {
 	@Named("osirisGeolocationMongoTemplate")
 	private MongoTemplate mongoTemplate;
 	
-	@Given("^I have a map file with appId \"([^\"]*)\"$")
-	public void I_a_map_with_appId(String appId) throws IOException{
+	@Given("^I have a map file with APPID \"([^\"]*)\"$")
+	public void I_a_map_with_APPID(String appId) throws IOException{
 	    // Express the Regexp above with the code you wish you had
 		File mapFile = new File("src/acceptance-test/resources/maps/background_" + appId +".map");
 		GridFS gridFS = getGridFS(collectionNameMap);
@@ -51,7 +51,7 @@ public class GetMapFile {
 	@When("^I invoke a GET to \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\" to get .map file$")
 	public void I_invoke_a_GET_to_and_applicationIdentifier_to_get_map_file(String url, String appIdentifier) throws Throwable {
 	    // Express the Regexp above with the code you wish you had
-		response  = sender.download(url,"application/octet-stream", "application/octet-stream",  new Headers("api_key", appIdentifier));		
+		response  = sender.download(url,"application/octet-stream", "application/octet-stream",  new Headers("api_key", appIdentifier), new Headers("Authorization", "Basic cm9vdDoxMjM0"));		
 		httpResponse.setResponse(response);
 	}
 	

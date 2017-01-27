@@ -18,13 +18,12 @@ import com.bitmonlab.osiris.api.core.map.assemblers.FeatureAssemblerImpl;
 import com.bitmonlab.osiris.api.core.map.assemblers.RoomAssemblerImpl;
 import com.bitmonlab.osiris.api.core.map.exceptions.QueryException;
 import com.bitmonlab.osiris.api.core.map.exceptions.RoomNotFoundException;
-import com.bitmonlab.osiris.api.core.map.managers.api.SearchManager;
 import com.bitmonlab.osiris.api.core.map.managers.impl.SearchManagerImpl;
 import com.bitmonlab.osiris.api.core.map.transferobject.FeatureDTO;
 import com.bitmonlab.osiris.api.core.map.transferobject.LayerDTO;
 import com.bitmonlab.osiris.api.core.map.transferobject.RoomDTO;
-import com.bitmonlab.osiris.api.map.rest.impl.SearchResourceImpl;
 import com.bitmonlab.osiris.commons.map.model.geojson.Feature;
+import com.bitmonlab.osiris.commons.model.security.BasicAuth;
 import com.bitmonlab.osiris.core.assembler.AssemblyException;
 import com.bitmonlab.osiris.core.validations.validator.Validations;
 
@@ -67,6 +66,9 @@ public class SearchResourceImplTest {
 	@Mock
 	private RoomDTO roomDTO;	
 	
+	@Mock
+	private BasicAuth principal;
+	
 	@Test
 	public void getRoomByLocationTest() throws AssemblyException, RoomNotFoundException{
 		//Fixture
@@ -78,7 +80,7 @@ public class SearchResourceImplTest {
 		Mockito.when(roomAssembler.createDataTransferObject(room)).thenReturn(roomDTO);
 				
 		//Experimentation
-		Response response = searchResourceImpl.getRoomByLocation(APP_IDENTIFIER, longitude, latitude, floor);
+		Response response = searchResourceImpl.getRoomByLocation(principal, APP_IDENTIFIER, longitude, latitude, floor);
 					
 		//Expectation		
 		Mockito.verify(validations).checkIsNotNullAndNotBlank(APP_IDENTIFIER);
@@ -106,7 +108,7 @@ public class SearchResourceImplTest {
 		Mockito.when(featureAssembler.createDataTransferObjects(collectionFeatures)).thenReturn(featuresDTO);
 		
 		//Experimentation
-		Response response = searchResourceImpl.getFeaturesByQuery(APP_IDENTIFIER, queryJson, layerDTO, pageIndex, pageSize, "", order);
+		Response response = searchResourceImpl.getFeaturesByQuery(principal, APP_IDENTIFIER, queryJson, layerDTO, pageIndex, pageSize, "", order);
 				
 		//Expectation	
 		Mockito.verify(validations).checkIsNotNullAndNotBlank(APP_IDENTIFIER,queryJson);
@@ -131,7 +133,7 @@ public class SearchResourceImplTest {
 	  Mockito.when(featureAssembler.createDataTransferObjects(collectionFeatures)).thenReturn(featuresDTO);
 	  	
 	  //Experimentation
-	  Response response = searchResourceImpl.getFeaturesByQuery(APP_IDENTIFIER, queryJson, layerDTO, pageIndex, pageSize, orderField, order);
+	  Response response = searchResourceImpl.getFeaturesByQuery(principal, APP_IDENTIFIER, queryJson, layerDTO, pageIndex, pageSize, orderField, order);
 	  				
 	  //Expectation		
 	  Mockito.verify(searchManagerImpl).getFeaturesByQuery(APP_IDENTIFIER,queryJson,layerDTO, pageIndex, pageSize, orderField, order);

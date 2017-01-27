@@ -19,6 +19,7 @@ import com.bitmonlab.osiris.restsender.ClientResponse;
 import com.bitmonlab.osiris.restsender.Headers;
 import com.bitmonlab.osiris.restsender.RestMethod;
 import com.bitmonlab.osiris.restsender.RestRequestSender;
+import com.bitmonlab.osiris.test.acceptancetest.map.commons.SecurityCredentials;
 import com.sun.jersey.api.client.GenericType;
 
 import cucumber.api.java.en.Given;
@@ -36,6 +37,9 @@ public class PreconditionStoreFeature {
 	@Inject
 	private DeleteFeatureAfter deleteAfter;
 	
+	@Inject
+	private SecurityCredentials securityCredentials;
+	
 	public ClientResponse<FeatureDTO> getResponse() {
 		return response;
 	}
@@ -43,6 +47,8 @@ public class PreconditionStoreFeature {
 	@Given("^I store a feature of type point with latitude (\\d+), longitude (\\d+), altitude (\\d+) and jsonObject with key \"([^\"]*)\" and value \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\"$")
 	public void I_store_a_feature_of_type_point_with_latitude_longitude_altitude_and_jsonObject_with_key_and_value_and_applicationIdentifier(Double latitude, Double longitude, Double altitude, String key, String value, String applicationID) throws Throwable {
 	    
+		securityCredentials.createCredential(applicationID, "root", "1234");
+		
 		Map<String,String> properties = new HashMap<String, String>();
 		properties.put(key, value);	
 		
@@ -50,7 +56,7 @@ public class PreconditionStoreFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, pointDTO);
 	
-		response=sender.invoke(RestMethod.POST, "osiris/geolocation/territory/feature", featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", applicationID));
+		response=sender.invoke(RestMethod.POST, "osiris/geolocation/territory/feature", featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", applicationID), new Headers("Authorization", "Basic cm9vdDoxMjM0"));
 		
 		Assert.assertEquals("The response must be an OK", Status.valueOf("OK").getStatusCode(),response.getStatus().getStatusCode());
 		
@@ -67,6 +73,9 @@ public class PreconditionStoreFeature {
 	@Given("^I store a feature of type lineString with latitude (\\d+), longitude (\\d+), altitude (\\d+), latitude (\\d+), longitude (\\d+), altitude (\\d+) and jsonObject with key \"([^\"]*)\" and value \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\"$")
 	public void I_store_a_feature_of_type_point_with_latitude_longitude_altitude_latitude_longitude_altitude_and_jsonObject_with_key_and_value_and_applicationIdentifier(Double latitude1, Double longitude1, Double altitude1, Double latitude2, Double longitude2, Double altitude2, String key, String value, String applicationID) throws Throwable {
 	    
+		
+		securityCredentials.createCredential(applicationID, "root", "1234");
+		
 		Map<String,String> properties = new HashMap<String, String>();
 		properties.put(key, value);	
 		
@@ -81,7 +90,7 @@ public class PreconditionStoreFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, lineStringDTO);
 	
-		response=sender.invoke(RestMethod.POST, "osiris/geolocation/territory/feature", featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", applicationID));
+		response=sender.invoke(RestMethod.POST, "osiris/geolocation/territory/feature", featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", applicationID), new Headers("Authorization", "Basic cm9vdDoxMjM0"));
 		
 		Assert.assertEquals("The response must be an OK", Status.valueOf("OK").getStatusCode(),response.getStatus().getStatusCode());
 		
@@ -144,7 +153,7 @@ public class PreconditionStoreFeature {
 		
 		FeatureDTO featureDTO=createFeatureDTO(properties, polygonDTO);
 						
-		response=sender.invoke(RestMethod.POST, "osiris/geolocation/territory/feature", featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", applicationID) );	
+		response=sender.invoke(RestMethod.POST, "osiris/geolocation/territory/feature", featureDTO, new GenericType<FeatureDTO>(){}, new Headers("api_key", applicationID), new Headers("Authorization", "Basic cm9vdDoxMjM0") );	
 		
 		Assert.assertEquals("The response must be an OK", Status.valueOf("OK").getStatusCode(),response.getStatus().getStatusCode());
 		
