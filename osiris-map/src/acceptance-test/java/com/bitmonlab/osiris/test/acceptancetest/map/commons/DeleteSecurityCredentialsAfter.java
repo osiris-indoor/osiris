@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.BasicQuery;
@@ -30,10 +29,10 @@ public class DeleteSecurityCredentialsAfter {
 	public void deleteSecurityCredentials() throws QueryException{
 		
 		for(int i=0; i<userNameDelete.size();i++){	
-			String userName = userNameDelete.get(i);
+			String _id = userNameDelete.get(i);
 			String idApp = idsApp.get(i);
 			
-			Query query = createQuery("{_id : '" + userName + "'}");
+			Query query = createQuery("{_id : '" + _id + "'}");
 						
 			mongoTemplate.remove(query, suffixCollectionCredential + idApp);
 									
@@ -45,9 +44,9 @@ public class DeleteSecurityCredentialsAfter {
 		
 	}
 	
-	public static void addIDs(String idApp, String userName){
+	public static void addIDs(String idApp, String _id){
 		
-		userNameDelete.add(userName);
+		userNameDelete.add(_id);
 		idsApp.add(idApp);
 	}
 	

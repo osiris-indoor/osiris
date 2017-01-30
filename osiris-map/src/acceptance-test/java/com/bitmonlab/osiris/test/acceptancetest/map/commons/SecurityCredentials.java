@@ -16,17 +16,17 @@ public class SecurityCredentials {
 		
 	private final static String suffixCollectionCredential = "credentials_app_";
 	
-	public void createCredential(String appId, String username, String password){
+	public void createCredential(String appId, String _id, String password){
 		
 		BasicAuth principal = new BasicAuth();
 		
-		principal.setUsername(username);
+		principal.setUsername(_id);
 		principal.setPassword(password);
 		
 		mongoTemplate.save(principal, suffixCollectionCredential + appId);
 		
 		
-		DeleteSecurityCredentialsAfter.addIDs(appId, username);
+		DeleteSecurityCredentialsAfter.addIDs(appId, _id);
 	}
 	
 	

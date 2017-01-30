@@ -21,9 +21,11 @@ public class AuthRepository {
 
 	public BasicAuth searchUserName(String appIdentifier, String userName) throws QueryException{
 		
-		Query query = createQuery("{username : '" + userName + "'}");
+				
+		Query query = createQuery("{_id : '" + userName + "'}");
 		
-		BasicAuth p = mongoTemplate.findOne(query, BasicAuth.class,collectionPrefixCredentials+appIdentifier); ;
+		BasicAuth p = mongoTemplate.findOne(query, BasicAuth.class,collectionPrefixCredentials+appIdentifier); 
+		
 		
 		if(p==null){
 			throw new QueryException();
