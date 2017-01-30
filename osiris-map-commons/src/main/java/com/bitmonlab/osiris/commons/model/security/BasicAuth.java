@@ -11,14 +11,14 @@ public class BasicAuth implements Serializable {
 	 */
 	private static final long serialVersionUID = -7103315600939610068L;
 	
-	@Id private String username;
+	@Id private String _id;
 	private String password;
 	
 		
 	public BasicAuth() {
 	}
-	public BasicAuth(String username) {
-		this.username = username;
+	public BasicAuth(String _id) {
+		this._id = _id;
 	}
 	
 	
@@ -31,14 +31,14 @@ public class BasicAuth implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return username;
+		return _id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String get_id() {
+		return _id;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String _id) {
+		this._id = _id;
 	}
 	
 	
