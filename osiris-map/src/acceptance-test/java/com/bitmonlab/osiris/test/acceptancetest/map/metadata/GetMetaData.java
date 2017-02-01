@@ -1,5 +1,8 @@
 package com.bitmonlab.osiris.test.acceptancetest.map.metadata;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -48,7 +51,7 @@ public class GetMetaData {
 	}
 
 	@When("^I invoke a GET metadata to \"([^\"]*)\" and applicationIdentifier \"([^\"]*)\"$")
-	public void I_invoke_a_GET_metadata_to_and_applicationIdentifier(String url, String appId){
+	public void I_invoke_a_GET_metadata_to_and_applicationIdentifier(String url, String appId) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 	    // Express the Regexp above with the code you wish you had
 		
 		securityCredentials.createCredential(appId, "root", "1234");

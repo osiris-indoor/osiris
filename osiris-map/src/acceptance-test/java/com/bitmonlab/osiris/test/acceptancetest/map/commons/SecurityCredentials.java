@@ -1,5 +1,8 @@
 package com.bitmonlab.osiris.test.acceptancetest.map.commons;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,7 +19,7 @@ public class SecurityCredentials {
 		
 	private final static String suffixCollectionCredential = "credentials_app_";
 	
-	public void createCredential(String appId, String _id, String password){
+	public void createCredential(String appId, String _id, String password) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 		
 		BasicAuth principal = new BasicAuth();
 		

@@ -1,6 +1,8 @@
 package com.bitmonlab.osiris.test.acceptancetest.map.search;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -45,7 +47,7 @@ public class GetRoomByLocation {
 	}
 
 	@When("^I invoke a GET to \"([^\"]*)\" with appId \"([^\"]*)\", longitude (.+), latitude (.+) and floor (\\d+)$")
-	public void I_invoke_a_GET_to_with_appId_longitude_latitude_and_floor(String url, String appId, double longitude, double latitude, int floor){
+	public void I_invoke_a_GET_to_with_appId_longitude_latitude_and_floor(String url, String appId, double longitude, double latitude, int floor) throws NoSuchAlgorithmException, UnsupportedEncodingException{
 				
 		securityCredentials.createCredential(appId, "root", "1234");
 		

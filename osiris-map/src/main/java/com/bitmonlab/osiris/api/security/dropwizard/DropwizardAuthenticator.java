@@ -53,13 +53,19 @@ public class DropwizardAuthenticator implements Authenticator<SpringSecurityCred
 		
 		
 		
-		if(credentials.getUsername().equals(credentialBD.get_id()) &&
-		   credentials.getPassword().equals(credentialBD.getPassword()) &&
-		   credentials.getApi_key().equals(credentials.getApi_key())){
-								
-			  principal = new BasicAuth(credentials.getUsername());
-			
-		}else{			
+		try {
+			if(credentials.getUsername().equals(credentialBD.get_id()) &&
+			   credentials.getPassword().equals(credentialBD.getPassword()) &&
+			   credentials.getApi_key().equals(credentials.getApi_key())){
+									
+				  principal = new BasicAuth(credentials.getUsername());
+				
+			}else{			
+				throw new AuthenticationException(
+						new AuthException(Constants.BAD_CREDENTIALS));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			throw new AuthenticationException(
 					new AuthException(Constants.BAD_CREDENTIALS));
 		}
