@@ -1,0 +1,174 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.bitmonlab.osiris.enrypt</groupId>
+  <artifactId>osiris-encrypt-password</artifactId>
+  <version>1.2.0</version>
+  <packaging>jar</packaging>
+
+  <name>osiris-encrypt-password</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>	
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <main.class>com.bitmonlab.osiris.encrypt.EncryptOsirisPassword</main.class>
+    <jar.name>osiris-encrypt-password</jar.name>   		
+	<compiler.version>1.8</compiler.version>
+  </properties>
+  
+   <build>
+		<finalName>${jar.name}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<source>${compiler.version}</source>
+						<target>${compiler.version}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<argLine>-XX:-UseSplitVerifier -Xms256m -Xmx1G -XX:PermSize=300m</argLine>
+						<systemPropertyVariables>
+            					<java.util.logging.config.class>
+                						com.bitmonlab.osiris.encrypt.LoggingConfig
+            						</java.util.logging.config.class>            
+        				</systemPropertyVariables>
+					</configuration>
+				</plugin>
+			</plugins>
+
+		</pluginManagement>
+	</build>
+	
+		<profiles>
+		
+		<profile>
+			<id>FatJar</id>
+			<build>
+				<finalName>${jar.name}</finalName>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>false</filtering>
+					</resource>
+				</resources>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<version>1.6</version>
+						<configuration>
+							<createDependencyReducedPom>true</createDependencyReducedPom>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>shade</goal>
+								</goals>
+								<configuration>
+									<transformers>
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+											<manifestEntries>
+												<Main-Class>${main.class}</Main-Class>												
+											</manifestEntries>
+										</transformer>
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+											<resource>META-INF/spring.handlers</resource>
+										</transformer>
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+											<resource>META-INF/spring.schemas</resource>
+										</transformer>
+									</transformers>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	
+	
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+ 	<dependency>
+	    <groupId>commons-codec</groupId>
+	    <artifactId>commons-codec</artifactId>
+	    <version>1.9</version>
+	</dependency>
+   
+  </dependencies>
+  
+      <distributionManagement>
+
+    	<snapshotRepository>
+        	<id>ocean-artifactory</id>
+            <name>ocean-artifactory-snapshots</name>           
+            <url>http://54.247.180.103/artifactory/aide-snapshot-local</url>         
+        </snapshotRepository>
+        
+    	 <repository>
+        	<id>ocean-artifactory</id>
+            <name>ocean-artifactory-release</name>
+            <url>http://54.247.180.103/artifactory/aide-release-local</url>
+        </repository>       
+
+    </distributionManagement>
+  
+  
+  
+</project>
