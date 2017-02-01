@@ -3,7 +3,7 @@
   
   <groupId>com.bitmonlab.osiris.api</groupId>
   <artifactId>osiris-map-services-core</artifactId>
-  <version>1.1.1</version>
+  <version>1.2.0</version>
   <packaging>jar</packaging>
   
   <name>osiris-map-services-core</name>
