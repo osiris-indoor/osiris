@@ -1,4 +1,4 @@
-** Warning! We are implementing security in all the services. As a consequence of this, the way to call the services is different and have to include the credential (see below). The example projects provided (Android and Leaflet source samples) in other repositories are temporally broken **
+**Warning! We are implementing security in all the services. As a consequence of this, the way to call the services is different and have to include the credential (see below). The example projects provided (Android and Leaflet source samples) in other repositories are temporally broken**
 
 # Osiris
 Osiris is a solution providing indoor mapping and APIs to access indoor GIS data. It is targeted to small / medium projects (smart buildings and campuses) and is provided as a software package ready to be installed and used. 
@@ -38,20 +38,24 @@ There are two things to do in order to set an Osiris environment. First we need 
   ```
   The first time you use the previous command the identificator will be created for the new map. Use again the same command to   update the map: the map will be rewriten with the same identifier.
 
-2. Now, we need to set up the security. ** Note that we are working to make this procedure easier (in the following days we will provide a tool to create users) **
+2. Now, we need to set up the security. **Note that we are working to make this procedure easier (in the following days we will provide a tool to create users)**
  
     2.1. First we need to generate the string to use in the mongo collection as an encrypted password
     
-    ```>java -jar osiris-encrypt-password.jar your_password```
-    This will output: zZpRQvC79xErr9l0yz8Wwg==
+      ```sh
+      java -jar osiris-encrypt-password.jar your_password
+      ```
+      This will output: zZpRQvC79xErr9l0yz8Wwg==
 
-    2.2.- now, you have to create a collection in Mogo for the credentials. Note that we will use MyMapId as the identifier of the map / application:
+    2.2. now, you have to create a collection in Mogo for the credentials. Note that we will use MyMapId as the identifier of the map / application:
     
-    ```>mongo
+    ```sh
+    mongo
     >use osirisGeolocation
     >db.createCollection("credentials_app_MyMapId", {} );
     >db.credentials_app_MyMapId.insert({"_id" : "your_username", "password" : "zZpRQvC79xErr9l0yz8Wwg=="}
-    >db.commit```
+    >db.commit
+    ```
     
     You can add as many users as you want using the db.credentials_app_MyMapId.insert command 
 
@@ -78,7 +82,9 @@ There are two things to do in order to set an Osiris environment. First we need 
 
 5. As an example using curl, you can call the search service this way:
 
-  ```curl -i -H "api_key: MyMapId" -H "Content-Type: application/json" -H "Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk"  -X POST -d '{ $and: [ {properties.indoor:{$exists: true}} , {properties.indoor: "level"}] }' http://127.0.0.1:8020/osiris/geolocation/territory/search?layer=MAP&pageSize=2000```
+  ```sh
+  curl -i -H "api_key: MyMapId" -H "Content-Type: application/json" -H "Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk"  -X POST -d '{ $and: [ {properties.indoor:{$exists: true}} , {properties.indoor: "level"}] }' http://127.0.0.1:8020/osiris/geolocation/territory/search?layer=MAP&pageSize=2000
+  ```
   
   If you imported a map (as explained in 1 ), you will see a JSON with information of your buildings.
 
