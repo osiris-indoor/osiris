@@ -301,12 +301,12 @@
             <dependency>
 			    <groupId>com.bitmonlab.osiris.commons</groupId>
 			    <artifactId>osiris-map-commons</artifactId>
-			    <version>1.1.1</version>
+			    <version>1.2.0</version>
 			</dependency>	    
 			<dependency>
 			    <groupId>com.bitmonlab.osiris.core</groupId>
 			    <artifactId>osiris-bitmonlab-core</artifactId>
-			    <version>1.1.1</version>
+			    <version>1.2.0</version>
 			</dependency>
 			
 		
