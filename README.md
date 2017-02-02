@@ -41,17 +41,19 @@ There are two things to do in order to set an Osiris environment. First we need 
 2. Now, we need to set up the security. ** Note that we are working to make this procedure easier (in the following days we will provide a tool to create users) **
  
     2.1. First we need to generate the string to use in the mongo collection as an encrypted password
+    
     ```>java -jar osiris-encrypt-password.jar your_password```
     This will output: zZpRQvC79xErr9l0yz8Wwg==
 
     2.2.- now, you have to create a collection in Mogo for the credentials. Note that we will use MyMapId as the identifier of the map / application:
-    >mongo
+    
+    ```>mongo
     >use osirisGeolocation
     >db.createCollection("credentials_app_MyMapId", {} );
     >db.credentials_app_MyMapId.insert({"_id" : "your_username", "password" : "zZpRQvC79xErr9l0yz8Wwg=="}
-    >db.commit
-
-  You can add as many users as you want using the db.credentials_app_MyMapId.insert command 
+    >db.commit```
+    
+    You can add as many users as you want using the db.credentials_app_MyMapId.insert command 
 
 3. Then the core services for building your apps:
   ```sh
@@ -68,22 +70,17 @@ There are two things to do in order to set an Osiris environment. First we need 
   POST    /osiris/geolocation/territory/search (com.bitmonlab.osiris.api.map.rest.impl.SearchResourceImpl)  
 
 4. To call the services it is necessary to include the credentials as follows:
-
-The user name and password should be encoded in Base64 (ISO-8895-1) using the format user:password
-
-In our example your_username:your_password is  eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk
-                   
-
- and this credential has to be added to the Authorization header:
-
- Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk
-
-
-5. As an example using curl, you can call the search service this way: 
-
-curl -i -H "api_key: MyMapId" -H "Content-Type: application/json" -H "Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk"  -X POST -d '{ $and: [ {properties.indoor:{$exists: true}} , {properties.indoor: "level"}] }' http://127.0.0.1:8020/osiris/geolocation/territory/search?layer=MAP&pageSize=2000
   
-If you imported a map (as explained in 1 ), you will see a JSON with information of your buildings.
+  The user name and password should be encoded in Base64 (ISO-8895-1) using the format user:password In our example your_username:your_password is  eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk and this credential has to be added to the Authorization header: 
+  
+  Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk
+
+
+5. As an example using curl, you can call the search service this way:
+
+  ```curl -i -H "api_key: MyMapId" -H "Content-Type: application/json" -H "Authorization: Basic eW91cl91c2VybmFtZTp5b3VyX3Bhc3N3b3Jk"  -X POST -d '{ $and: [ {properties.indoor:{$exists: true}} , {properties.indoor: "level"}] }' http://127.0.0.1:8020/osiris/geolocation/territory/search?layer=MAP&pageSize=2000```
+  
+  If you imported a map (as explained in 1 ), you will see a JSON with information of your buildings.
 
 #Android demo application
 You can use our sample aplication for testing your maps. Just get the code from its [repository] (https://github.com/osiris-indoor/mapviewer-android) and follow the instrucions to compile it using your own server adress.
