@@ -41,20 +41,17 @@ There are two things to do in order to set an Osiris environment. First we need 
 2. Now, we need to set up the security. ** Note that we are working to make this procedure easier (in the following days we will provide a tool to create users) **
  
     2.1. First we need to generate the string to use in the mongo collection as an encrypted password
-
->java -jar osiris-encrypt-password.jar your_password
-
-This will output: zZpRQvC79xErr9l0yz8Wwg==
+    ```>java -jar osiris-encrypt-password.jar your_password```
+    This will output: zZpRQvC79xErr9l0yz8Wwg==
 
     2.2.- now, you have to create a collection in Mogo for the credentials. Note that we will use MyMapId as the identifier of the map / application:
+    >mongo
+    >use osirisGeolocation
+    >db.createCollection("credentials_app_MyMapId", {} );
+    >db.credentials_app_MyMapId.insert({"_id" : "your_username", "password" : "zZpRQvC79xErr9l0yz8Wwg=="}
+    >db.commit
 
->mongo
->use osirisGeolocation
->db.createCollection("credentials_app_MyMapId", {} );
->db.credentials_app_MyMapId.insert({"_id" : "your_username", "password" : "zZpRQvC79xErr9l0yz8Wwg=="}
->db.commit
-
-You can add as many users as you want using the db.credentials_app_MyMapId.insert command 
+  You can add as many users as you want using the db.credentials_app_MyMapId.insert command 
 
 3. Then the core services for building your apps:
   ```sh
