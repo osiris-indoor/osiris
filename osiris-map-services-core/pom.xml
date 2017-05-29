@@ -299,15 +299,22 @@
             
             <!--  commons and core  BITMONLAB -->            
             <dependency>
-			    <groupId>com.bitmonlab.osiris.commons</groupId>
-			    <artifactId>osiris-map-commons</artifactId>
-			    <version>1.2.0</version>
-			</dependency>	    
-			<dependency>
-			    <groupId>com.bitmonlab.osiris.core</groupId>
-			    <artifactId>osiris-bitmonlab-core</artifactId>
-			    <version>1.2.0</version>
-			</dependency>
+                    <groupId>com.bitmonlab.osiris.commons</groupId>
+                    <artifactId>osiris-map-commons</artifactId>
+                    <version>1.2.0</version>
+                </dependency>	    
+                <dependency>
+                    <groupId>com.bitmonlab.osiris.core</groupId>
+                    <artifactId>osiris-bitmonlab-core</artifactId>
+                    <version>1.2.0</version>
+            </dependency>
+            
+            <!-- Other dependencies -->
+            <dependency>
+                <groupId>com.owlike</groupId>
+                <artifactId>genson</artifactId>
+                <version>1.4</version>
+            </dependency>
 			
 		
     </dependencies>
