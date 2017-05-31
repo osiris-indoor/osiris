@@ -41,8 +41,8 @@ import com.yammer.dropwizard.auth.Auth;
 @Api("/osiris/geolocation/territory/feature")
 @Path("/osiris/geolocation/territory/feature")
 @Named
-//@Consumes({ MediaType.APPLICATION_JSON })
-//@Produces({ MediaType.APPLICATION_JSON })
+@Consumes({ MediaType.APPLICATION_JSON })
+@Produces({ MediaType.APPLICATION_JSON })
 public class FeatureResourceImpl implements FeatureResource{	  
 		
 	@Inject

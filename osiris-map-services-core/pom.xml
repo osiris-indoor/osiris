@@ -309,13 +309,7 @@
                     <version>1.2.0</version>
             </dependency>
             
-            <!-- Other dependencies -->
-            <dependency>
-                <groupId>com.owlike</groupId>
-                <artifactId>genson</artifactId>
-                <version>1.4</version>
-            </dependency>
-			
+	
 		
     </dependencies>
    
