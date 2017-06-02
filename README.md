@@ -1,5 +1,3 @@
-**Warning! We are implementing security in all the services. As a consequence of this, the way to call the services is different and have to include the credential (see below). The example projects provided (Android and Leaflet source samples) in other repositories are temporally broken**
-
 # Osiris
 Osiris is a solution providing indoor mapping and APIs to access indoor GIS data. It is targeted to small / medium projects (smart buildings and campuses) and is provided as a software package ready to be installed and used. 
 Some of the Osiris's key features are the following:
@@ -38,7 +36,7 @@ There are two things to do in order to set an Osiris environment. First we need 
   ```
   The first time you use the previous command the identificator will be created for the new map. Use again the same command to   update the map: the map will be rewriten with the same identifier.
 
-2. Now, we need to set up the security. **Note that we are working to make this procedure easier (in the following days we will provide a tool to create users)**
+2. Now, we need to set up the security. 
  
     2.1. First we need to generate the string to use in the mongo collection as an encrypted password
     
@@ -88,8 +86,8 @@ There are two things to do in order to set an Osiris environment. First we need 
   
   If you imported a map (as explained in 1 ), you will see a JSON with information of your buildings.
 
-#Android demo application
-You can use our sample aplication for testing your maps. Just get the code from its [repository] (https://github.com/osiris-indoor/mapviewer-android) and follow the instrucions to compile it using your own server adress.
+#Leaflet demo applications
+You can use our sample aplications for testing your maps. Just get the code from the exmaples [repository] (https://github.com/osiris-indoor/osiris-examples).
 
 #Mapping
 To create your maps follow thsi [instructions] (https://github.com/osiris-indoor/sample-maps/wiki/How-to-map-a-building) and check our sample maps [repository] (https://github.com/osiris-indoor/sample-maps)
