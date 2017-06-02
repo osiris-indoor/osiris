@@ -6,10 +6,10 @@ Some of the Osiris's key features are the following:
 - Osiris provides an additional Points of Interest API which can be used to point external outdoor places or services.
 - A batch process generates a map in Mapsforge format that can be used to display the outdoor maps in your application.
 
-#Requirements
+# Requirements
 Osiris needs Maven to be built and MongoDB to store data
 
-#Building Osiris
+# Building Osiris
 There is a build.sh script which creates all the libraries and the fatjars needed. After executing it, you will find a collection of jar files and scripts within the bin directory. You can use this folder as a sandbox for trying Osiris, if you want to customize your installation take a look at the configuration files EnvConf.yml and env.properties
 
 First, get the code of the project cloning the repository or downloading the zip file. Using the first method:
@@ -23,7 +23,7 @@ cd osiris
 ```
 The script builds all the components and runs the unit tests for each of them.
 
-#Running Osiris
+# Running Osiris
 There are two things to do in order to set an Osiris environment. First we need to import a map, second we will launch our Rest Services application. For both processes a MongoDB instance should be running.
 
 1. First the map import command:
@@ -86,8 +86,8 @@ There are two things to do in order to set an Osiris environment. First we need 
   
   If you imported a map (as explained in 1 ), you will see a JSON with information of your buildings.
 
-#Leaflet demo applications
+# Leaflet demo applications
 You can use our sample aplications for testing your maps. Just get the code from the exmaples [repository] (https://github.com/osiris-indoor/osiris-examples).
 
-#Mapping
+# Mapping
 To create your maps follow thsi [instructions] (https://github.com/osiris-indoor/sample-maps/wiki/How-to-map-a-building) and check our sample maps [repository] (https://github.com/osiris-indoor/sample-maps)
